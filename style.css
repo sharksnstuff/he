@@ -137,3 +137,7 @@ a
     color: #a4a4a4;
     font-size: 12px;
 }
+
+summary {
+	display: block
+}

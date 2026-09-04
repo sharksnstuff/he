@@ -1,0 +1,18 @@
+﻿charset,UTF-8
+
+name,Medic
+type,ghost
+
+sakura.name,Medic
+kero.name,idklol
+
+craftman,mysterious evil birthday wizard
+craftman,mysterious evil birthday wizard
+craftmanurl,https://www.youtube.com/watch?v=l8hqAHmm7cs
+
+sstp.allowunspecifiedsend,0
+shiori,yaya.dll
+
+icon,meem.ico
+
+balloon,demobubble.nar

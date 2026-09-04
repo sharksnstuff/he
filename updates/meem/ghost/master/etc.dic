@@ -1,0 +1,968 @@
+﻿//---------------------------Miscellaneous Functions--------------------------
+
+//This .dic file is concerned with a number of functions that didn't quite fit in anywhere else. If you're adding new functions, this may be the place to do it! This also has the functions related to updating your ghost, among others. Most of this will just be replacing simple placeholder dialogue with dialogue more appropriate for your ghost. 
+
+//This is basically bonus features and flavor text for a few of the more uncommon functions of a ghost. You don't HAVE to fill these out if you don't want to, the template's default dialogue will handle it (assuming you're making a two person ghost... if not, you may have to go through and remove Triangle's dialogue tags so he doesn't appear when you don't want him to). So if this file is boring or intimidating or you don't care, you can ignore it! These are again edge-cases compared to how often you'll see aitalk, bootend, or menu dialogue instead.
+
+/*
+This file has...
+
+OnInstallBegin
+OnInstallComplete
+OnInstallFailure
+OnInstallRefuse
+OnVanishSelecting
+OnVanishSelected
+OnVanishCancel
+OnVanishButtonHold
+OnVanished
+OnBIFFBegin
+OnBIFFComplete
+OnBIFFFailure
+OnUpdateBegin
+OnUpdateReady
+OnUpdateComplete
+OnUpdateFailure
+OnUpdate.OnDownloadBegin
+OnUpdate.OnMD5CompareBegin
+OnUpdate.OnMD5CompareComplete
+OnUpdate.OnMD5CompareFailure
+OnHeadlinesenseBegin
+OnHeadlinesense.OnFind
+Select.Headline_Cancel
+OnHeadlinesenseComplete
+OnHeadlinesenseFailure
+OnUpdatedataCreating
+OnUpdatedataCreated
+OnNarCreating
+OnNarCreated
+OnSNTPBegin
+OnSNTPCompare
+OnSNTPEXECUTE
+OnSNTPCANCEL
+OnSNTPFailure
+OnDisplayChange
+OnScreenSaverStart
+OnScreenSaverEnd
+OnApplicationBoot
+OnApplicationClose
+OnApplicationFileOpen
+OnBatteryLow
+OnBatteryCritical
+OnShellScaling
+OnFileDrop2
+*/
+
+//You can guess at what each function does by its name for the most part. You can go through and find the functions that seem the most interesting, or the most likely, to appear and then just fill those out if you don't want to do all of them. Or, if you want to go full nuclear, you can just wipe this whole file and let SSP's default dialogue handle whenever these scenarios come up. It depends on what you have the energy for and how thorough you want to be.
+
+//This file IS long, but you'll only have to do it once! Probably. And again, you don't have to do all of it, or even most of it if you don't want to. Don't let this be a roadblock for you! It's basically bonus material! What matters is your aitalk file more than anything. You can always come back to this and fill it out over time once your ghost is already published. Don't get stuck here! I know it's easy to do so but don't let it happen to you! If you're getting stuck here just walk out, you can leave! lol. There's always aitalk, bootend, and menu to have more fun with, and that's the dialogue your user is going to see the most often.
+
+
+//Make sure to read the walkthrough page (http://www.ashido.com/ukagaka/walkthrough.html) for more details about how to properly format ghost dialogue!
+
+//I will reiterate that you should be editing these in Notepad++, and in particular, you should set the Language to C (or Java I guess) to properly highlight all the text. It will make things A LOT EASIER for you, trust me! It will also help you keep track of your brackets in case you forget some. If you click on a line with a bracket in Notepad++, it should highlight where the other bracket ends, or turn purple if there's no finishing bracket (which you should definitely fix!)
+//It will also highlight my commented lines in green, so you'll know where they are. Any line beginning with // is a commented line that the code will not read. It's just for your reference!
+
+
+//If you see a big block of commented text you want to uncomment, highlight the text and then hit ctrl-shift-k in Notepad++ and that should uncomment it. Mostly this is intended for advanced users.
+
+
+
+ //---- OnInstallBegin -------------------------------------------------------
+ //OnInstallBegin is called when a file with an included install.txt is dropped on your ghost. This primarily means things like .nar files for other ghosts or .zip files containing balloons or shells for your ghosts. Primarily ghost-related things. Replace as you want.
+ 
+OnInstallBegin
+{
+	if sleeping == 1
+	{
+		sleeping = 0
+		sitting = 0
+		
+		sleeptimer = 0
+		waketimer = 1
+		minsincewake = 0
+		"\s[80]\i[0]GhhHUH—!\n\n[half]\w4\s[24]\i[a]What\i[ch]\![anim,clear,a]—\w4\s[23]\i[a]where—\n\n[half]\w4\s[0]\i[ch]D-di\i[a]\![anim,clear,ch]d you\i[o]\![anim,clear,ch] nee\i[a]\![anim,clear,o]d somet\i[ch]\![anim,clear,a]hing???\n\n[half]\w8\w8\w4\c"
+	}
+	--
+	"\0\s[132]\i[base]\i[armcross]I'm g\i[a]\![anim,clear,base]uess\i[ch]\![anim,clear,a]ing \i[a]\![anim,clear,ch]I have n\i[o]\![anim,clear,a]o cho\i[au]\![anim,clear,o]ice.\i[ch]\![anim,clear,au].. \w5\s[232]\i[a]very wel\i[ch]\![anim,clear,a]l.\s[70]\i[ch]Er, \w3\i[a]\![anim,clear,ch]let's\i[ch]\![anim,clear,a] see...\e"
+}
+
+ //---- OnInstallComplete -------------------------------------------------------
+ //OnInstallComplete runs once the file above has finished installing.
+ 
+OnInstallComplete
+ {
+	"\0" //this means your main character will be speaking first, therefore the \s[] at the beginning of each line will be defining your main character's pose.
+ 	--
+	if reference0 == "shell" //This is checking to see if what you installed is classified as a shell in the install.txt. Remember the line in install.txt that said type,ghost or type,shell? This is why that line is important, that's what tells the program what it's installing like so.
+ 	{	
+		if reference1 == "Hypothetical Shell that doesn't actually exist" //This is the name of your shell as you defined in descript.txt in the shell folder.
+		{
+		"\s[0]Installed Hypothetical Shell. Truncated for space.\e"
+		}
+		else //For any other shell they may install.
+		{
+		"\s[70]\i[o]How i\i[ch]\![anim,clear,o]ntere\i[a]\![anim,clear,ch]sting\i[ch]\![anim,clear,a]. \w5\s[71]\i[ch]It s\i[a]\![anim,clear,ch]ays he\i[ch]\![anim,clear,a]re it\i[a]\![anim,clear,ch]'s a\i[ch]\![anim,clear,a] shel\i[a]\![anim,clear,ch]l cal\i[ch]\![anim,clear,a]led \i[a]\![anim,clear,ch]%(reference1)..\i[ch]\![anim,clear,a].   \w5\s[232]\i[ch]\i[armcross] it's\i[a]\![anim,clear,ch] been\i[ch]\![anim,clear,a] ins\i[au]\![anim,clear,ch]talled\i[ch]\![anim,clear,au].\e"
+		//%(reference1) here would be the name of the shell they installed. Replace if needed.
+		}
+ 	}
+	elseif reference0 == "ghost" //if the type of the file they're installing is a ghost.
+ 	{
+		"\s[170]\i[a]Ah. \i[base]\![anim,clear,a]\w5\s[171]\i[au]Found a\i[o]\![anim,clear,au] new\i[a]\![anim,clear,o] victi\i[base]\![anim,clear,a]m to \i[o]\![anim,clear,base]hold\i[au]\![anim,clear,o] captive\i[ch]\![anim,clear,au] for\i[a]\![anim,clear,ch] your a\i[ch]\![anim,clear,a]muse\i[o]\![anim,clear,ch]ment,\i[ch]\![anim,clear,o] I \i[a]\![anim,clear,ch]see? \i[ch]\![anim,clear,a]\w5\s[170]\i[a]Well, i\i[ch]\![anim,clear,a]f I \i[a]\![anim,clear,ch]must..\i[ch]\![anim,clear,a].\n\n[half]\f[italic,true]\w5(%(reference1) has been installed.)\e"
+ 	}
+	elseif reference0 == "balloon" //if the type of file is a balloon
+ 	{
+		"\s[71]\i[ch]What\i[au]\![anim,clear,ch] on e\i[ch]\![anim,clear,au]arth \i[o]\![anim,clear,ch]do you \i[ch]\![anim,clear,o]need \i[a]\![anim,clear,ch]a '%(reference1)'\i[base]\![anim,clear,a] bal\i[a]\![anim,clear,base]loon\i[o]\![anim,clear,a] for?\i[ch]\![anim,clear,o] \w6\s[232]\i[armcross]\i[ch]It's \i[a]\![anim,clear,ch]been\i[ch]\![anim,clear,a] inst\i[au]\![anim,clear,ch]alled\i[ch]\![anim,clear,au].\e"
+		//Reference1 here would be the name of the balloon. Replace as needed.
+ 	}
+	elseif reference0 == "plugin" //if the type of file is a plug-in
+ 	{
+		"\s[70]\i[a]%(reference1).\i[ch]\![anim,clear,a].. \w5\s[71]\i[a]this \i[au]\![anim,clear,a]plug\i[ch]\![anim,clear,au]-in w\i[o]\![anim,clear,ch]ould\i[ch]\![anim,clear,o]n't \i[a]\![anim,clear,ch]happ\i[ch]\![anim,clear,a]en t\i[o]\![anim,clear,ch]o pos\i[ch]\![anim,clear,o]e any\i[a]\![anim,clear,ch] harm \i[base]\![anim,clear,a]to an e\i[o]\![anim,clear,base]ntit\i[ch]\![anim,clear,o]y liv\i[a]\![anim,clear,ch]ing insi\i[ch]\![anim,clear,a]de th\i[a]\![anim,clear,ch]e progra\i[ch]\![anim,clear,a]m, w\i[o]\![anim,clear,ch]ould \i[base]\![anim,clear,o]it? \i[a]\![anim,clear,base]\w4\i[ch]\![anim,clear,a]\w8\w3\s[170]\i[a]Just asking\i[ch]\![anim,clear,a].\n\n[half]\f[italic,true]\w5(It's been installed.)\e"
+		//Reference1 here would be the name of the plug-in. Replace as needed.
+ 	}
+	elseif reference0 == "calendar skin" //if the type of file is a calendar skin
+	{
+		"\s[70]\i[a]A calend\i[ch]\![anim,clear,a]ar s\i[a]\![anim,clear,ch]kin?\i[ch]\![anim,clear,a] \w5\s[71]\i[o]Do you\i[a]\![anim,clear,o] real\i[ch]\![anim,clear,a]ly sp\i[a]\![anim,clear,ch]end that m\i[ch]\![anim,clear,a]uch t\i[a]\![anim,clear,ch]ime l\i[o]\![anim,clear,a]ooki\i[ch]\![anim,clear,o]ng a\i[a]\![anim,clear,ch]t yo\i[o]\![anim,clear,a]ur ca\i[a]\![anim,clear,o]lendar?\i[ch]\![anim,clear,a] \w5\s[133]\i[a]\i[armcross]It's\i[ch]\![anim,clear,a] inst\i[au]\![anim,clear,ch]alled\i[o]\![anim,clear,au] now,\i[ch]\![anim,clear,o] in a\i[a]\![anim,clear,ch]ny case\i[ch]\![anim,clear,a].\e"
+	}
+	elseif reference0 == "headline" //if the file/url you drop on them is counted as a headline. To be honest with you I don't know what determines whether a url is a headline or what.
+	{
+		"\0\s[71]\i[au]Are \i[o]\![anim,clear,au]you e\i[a]\![anim,clear,o]ven \i[ch]\![anim,clear,a]aware\i[a]\![anim,clear,ch] of w\i[o]\![anim,clear,a]hat \i[a]\![anim,clear,o]this \i[ch]\![anim,clear,a]is f\i[o]\![anim,clear,ch]or? \i[ch]\![anim,clear,o]\w5\s[70]\i[a]I ho\i[base]\![anim,clear,a]pe yo\i[o]\![anim,clear,base]u kno\i[a]\![anim,clear,o]w wha\i[ch]\![anim,clear,a]t yo\i[o]\![anim,clear,ch]u're do\i[ch]\![anim,clear,o]ing \i[a]\![anim,clear,ch]here,\i[ch]\![anim,clear,a] for \i[o]\![anim,clear,ch]both\i[au]\![anim,clear,o] our \i[a]\![anim,clear,au]sakes\i[ch]\![anim,clear,a].\n\n[half]\f[italic,true]\w5(%(reference1) has been installed.)\e"
+	}
+	elseif reference0 == "rss" //this is more clearly for when you drag an rss feed onto your ghost. you can find rss feeds on sites by looking for the little rss icon, it kind of looks like a little satellite. you can google more info on rss feeds if you're curious! They're neat!
+	{
+		"\0\s[170]\i[au]RSS...\i[ch]\![anim,clear,au] \w5\s[70]\i[a]What \i[ch]\![anim,clear,a]the \i[a]\![anim,clear,ch]devil\i[ch]\![anim,clear,a] is \i[a]\![anim,clear,ch]an RSS? \i[ch]\![anim,clear,a]\w5\s[71]\i[au]What\i[a]\![anim,clear,au] exac\i[ch]\![anim,clear,a]tly a\i[a]\![anim,clear,ch]re y\i[o]\![anim,clear,a]ou ha\i[a]\![anim,clear,o]ving \i[ch]\![anim,clear,a]me pu\i[o]\![anim,clear,ch]t on\i[au]\![anim,clear,o] thi\i[ch]\![anim,clear,au]s com\i[a]\![anim,clear,ch]puter\i[ch]\![anim,clear,a] for\i[o]\![anim,clear,ch] you?\i[ch]\![anim,clear,o]\n\n[half]\f[italic,true]\w5(%(reference1) has been installed.)\e"
+	}
+	else //for any other file they'd install
+	{
+		"\s[232]\i[au]\i[armcross]Done\i[ch]\![anim,clear,au].\n\n[half]\f[italic,true]\w5(%(reference1) has been installed.)\e"
+	}
+}
+
+//---- OnInstallFailure -------------------------------------------------------
+//If the file you dropped fails to install for one reason or another.
+
+OnInstallFailure
+ {
+	"\0\s[70]\i[o]Ooh, i\i[ch]\![anim,clear,o]t's—\n\n[half]\w5\s[170]\i[a]Ah. \i[base]\![anim,clear,a]\w6" //this first bit of dialogue begins the explanation of what happened. You can replace this with an appropriate intro statement.
+	--
+	if reference0 == "unsupported" //These if statements determine how it happened to finish the piece of dialogue. This checks if the reason it failed is because it was unsupported.
+	{
+	"\s[171]\i[ch]Seems\i[a]\![anim,clear,ch] like\i[ch]\![anim,clear,a] the\i[au]\![anim,clear,ch] file\i[ch]\![anim,clear,au] is u\i[a]\![anim,clear,ch]nsupp\i[o]\![anim,clear,a]orted\i[ch]\![anim,clear,o].\e"
+	//Replace with whatever dialogue for an unsupported file you may come up with.
+	}	
+	elseif reference0 == "extraction" //This checks if the file didn't extract properly.
+	{
+	"\i[au]\![anim,clear,base]I cou\i[o]\![anim,clear,au]ldn'\i[ch]\![anim,clear,o]t ext\i[a]\![anim,clear,ch]ract\i[ch]\![anim,clear,a] it \i[au]\![anim,clear,ch]proper\i[ch]\![anim,clear,au]ly. \w6\s[40]\i[o]Perh\i[a]\![anim,clear,o]aps t\i[ch]\![anim,clear,a]he f\i[a]\![anim,clear,ch]ile i\i[ch]\![anim,clear,a]s da\i[a]\![anim,clear,ch]maged\i[ch]\![anim,clear,a]?\e"
+	//See above but for a failed extraction.
+	}
+ }
+ 
+ //--OnInstallRefuse
+ //If the file you dropped can't be installed with this ghost.
+ 
+OnInstallRefuse
+ {
+	"\0\s[70]\i[o]Ooh, i\i[ch]\![anim,clear,o]t's—\n\n[half]\w5\s[170]\i[a]Ah. \i[base]\![anim,clear,a]\w5\i[ch]\![anim,clear,base]It's \i[au]\![anim,clear,ch]not f\i[o]\![anim,clear,au]or m\i[ch]\![anim,clear,o]e.\n\n[half]\w8\w1\s[131]\i[base]\i[armcross]Appar\i[a]\![anim,clear,base]ently\i[ch]\![anim,clear,a] only\i[a]\![anim,clear,ch] %(reference0)\i[ch]\![anim,clear,a] can\i[a]\![anim,clear,ch] inst\i[ch]\![anim,clear,a]all \i[au]\![anim,clear,ch]this \i[ch]\![anim,clear,au]parti\i[a]\![anim,clear,ch]cular fil\i[ch]\![anim,clear,a]e. \w5\s[201]\i[a]\i[armup]A sham\![anim,clear,a]e.\e"
+	
+	//reference0 in this function refers to the ghost this file is associated with, probably the name of the ghost listed in its install.txt file. You would see this if you dropped a shell made for a different ghost on your current ghost, for example. They can't install a shell for themselves they can't use, right? Anyway, replace this with what you wish, you can use the reference0 envelope or not if you want.
+ }
+
+
+//**** Uninstallation ******************************************
+//You may have noticed in the configuration menus in menu.dic an option to turn Uninstall on or off, as well as a greyed out option to uninstall in the right click menu. These following functions relate to the uninstallation process when it's on. Replace the dialogue in each function as we go along.
+
+
+//--OnVanishSelecting
+//When you select the uninstall option in the menu.
+
+OnVanishSelecting
+{
+	"\0\f[italic,true](Do you really want to uninstall him...?)\e"
+}
+
+//OnVanishSelected
+//When you decide to uninstall them. 
+
+OnVanishSelected
+{
+	if sleeping == 1
+	{
+		"\0Zzz... \w8mmfg... \w8nn...? \w8Zzz...\e"
+	}
+	else
+	{
+		"\0\s[1]\i[au]Ah, y\i[o]\![anim,clear,au]ou ac\i[a]\![anim,clear,o]tual\i[ch]\![anim,clear,a]ly CA\i[hapia]\![anim,clear,ch]N get bo\i[o]\![anim,clear,hapia]red! \i[hapich]\![anim,clear,o]\w5\s[240]\i[hapia]\i[armcross]I wa\i[hapich]\![anim,clear,hapia]s re\i[hapia]\![anim,clear,hapich]ally starti\i[hapich]\![anim,clear,hapia]ng to\i[o]\![anim,clear,hapich] get\i[hapich]\![anim,clear,o] wor\i[hapia]\![anim,clear,hapich]ried, ha!\i[hapich]\![anim,clear,hapia]\w9\w9\e"
+	}
+}
+
+
+//--OnVanishCancel
+//If you select Uninstall from the menu, but decide not to do it.
+
+OnVanishCancel
+{
+	if sleeping == 1
+	{
+		"\0Zzz... zzznn... zzz...\e"
+	}
+	else
+	{
+	"\0\s[101]\i[a]Ah... \w4\s[151]\i[a]\i[arm1up]\i[arm2up]and h\i[ch]\![anim,clear,a]ere I\i[au]\![anim,clear,ch] was \i[o]\![anim,clear,au]think\i[ch]\![anim,clear,o]ing y\i[o]\![anim,clear,ch]ou'd\i[a]\![anim,clear,o] final\i[ch]\![anim,clear,a]ly go\i[a]\![anim,clear,ch]tten bore\i[ch]\![anim,clear,a]d of \i[au]\![anim,clear,ch]all \i[a]\![anim,clear,au]this.\i[ch]\![anim,clear,a] \w5\s[251]\i[o]Oh w\i[a]\![anim,clear,o]ell.\i[ch]\![anim,clear,a]\e"
+	}
+}
+
+//--OnVanishButtonHold
+//This should trigger if you double click the ghost's balloon in the middle of OnVanishSelected above. So it basically cancels their uninstallation. I'd be pretty careful about testing this, and I'd probably just put the line of dialogue into their script input and test it that way instead.
+
+OnVanishButtonHold
+{
+	if sleeping == 1
+	{
+		"\0Zzzz...\e"
+	}
+	else
+	{
+	"\0\s[100]\i[a]The fickle\i[ch]\![anim,clear,a] sort\i[au]\![anim,clear,ch], are\i[o]\![anim,clear,au]n't \i[ch]\![anim,clear,o]you?\e"
+	}
+}
+
+
+ //---- OnVanished -----------------------------------------
+ //OnVanished is a weird little function. Basically, if you uninstall a ghost, it'll automatically go back to the last ghost you were using. They'll then say this line of dialogue about the ghost you just uninstalled. This is very annoying to test as you can imagine! But unlikely to come up super often, I bet. Make sure to set up both their poses immediately so they both appear when it switches back to them.
+ 
+OnVanished
+ {
+	"\0\s[60]\i[o]So d\i[a]\![anim,clear,o]id th\i[ch]\![anim,clear,a]at ki\i[a]\![anim,clear,ch]ll %(reference0)\i[ch]\![anim,clear,a], or\i[o]\![anim,clear,ch] mer\i[a]\![anim,clear,o]ely f\i[ch]\![anim,clear,a]ree t\i[a]\![anim,clear,ch]hem p\i[ch]\![anim,clear,a]erman\i[a]\![anim,clear,ch]ently from t\i[ch]\![anim,clear,a]his \i[au]\![anim,clear,ch]prog\i[ch]\![anim,clear,au]ram's\i[a]\![anim,clear,ch] confines?\i[ch]\![anim,clear,a] \w5\s[33]\i[ch]\i[armcross]The s\i[a]\![anim,clear,ch]cien\i[ch]\![anim,clear,a]ce of\i[o]\![anim,clear,ch] thi\i[ch]\![anim,clear,o]s al\i[au]\![anim,clear,ch]l is \i[a]\![anim,clear,au]so fascinating\i[ch]\![anim,clear,a]...\e"
+}
+
+
+//**** Mail Checking *******************************************************************
+//The next set of functions have to do with checking your email. This function is a slippery little thing - I've had people test it following my directions and have it work, but I've never actually gotten it to report back the right amount of emails myself. Very frustrating. But perhaps you'll have more luck with it, haha.
+//Girl and Triangle can't actually read your email, they can just tell you how many emails you have. I've seen ghosts that can read the HEADERS of email, but I still don't think ghosts can actually display the contents of an email. You should be using your actual email client for that. It's still kind of a neat feature though.
+
+
+//*********************Advanced User Info*******************************
+//These text boxes are meant for those who have an interest in expanding or using more complicated functions in their ghost. Also for my own reference in the future since I plan on using this template too, haha. If you have no interest in any of this and just want to keep things as simple as possible, feel free to skip these boxes.
+
+//If you want to set up your ghost to check your mail so you can more easily check these messages instead of just writing the dialogue and moving on, it's a little bit tricky, but not super hard.
+//Basically, you're going to need to find your POP settings for your email account. Googling your provider + POP should bring it up pretty quick. Once you have the info, you'll go to the right click menu, options, then preferences. A big menu should pop up, and you should see POP in the left side. Click that, and input all the info from the POP page you looked up for your account. Tell your ghost to check your email, and if it works, then congratulations!
+//***********************************************************************
+
+
+ //---- OnBIFFBegin ---------------------------------------------------------------
+ //When you first tell the ghost to check your email. An intro statement, if you will. Replace with whatever you like.
+ 
+OnBIFFBegin
+ {
+	if mailonce 
+	{
+			mailonce = 1
+			"\s[62]\i[o]Ooh! \w4\i[hapia]\![anim,clear,o]Lett\i[hapich]\![anim,clear,hapia]ing m\i[o]\![anim,clear,hapich]e poke\i[hapich]\![anim,clear,o] thr\i[o]\![anim,clear,hapich]ough\i[hapia]\![anim,clear,o] your \i[hapich]\![anim,clear,hapia]perso\i[hapia]\![anim,clear,hapich]nal i\i[hapich]\![anim,clear,hapia]nfor\i[hapia]\![anim,clear,hapich]mati\i[hapich]\![anim,clear,hapia]on, \w1\i[hapia]\![anim,clear,hapich]are \i[o]\![anim,clear,hapia]you?\i[hapich]\![anim,clear,o]\n\n[half]\w6\s[170]\i[au]How \i[a]\![anim,clear,au]gener\i[o]\![anim,clear,a]ous.\i[ch]\![anim,clear,o]\e"
+	}
+	else
+	{
+		"\0\s[62]\i[ch]You k\i[o]\![anim,clear,ch]now, \w2\i[base]\![anim,clear,o]mos\i[o]\![anim,clear,base]t peo\i[a]\![anim,clear,o]ple wou\i[o]\![anim,clear,a]ldn't\i[ch]\![anim,clear,o] be s\i[o]\![anim,clear,ch]o eag\i[ch]\![anim,clear,o]er to l\i[o]\![anim,clear,ch]et a\i[a]\![anim,clear,o] man \i[base]\![anim,clear,a]like \i[a]\![anim,clear,base]me go thr\i[ch]\![anim,clear,a]ough \i[o]\![anim,clear,ch]their\i[ch]\![anim,clear,o] pers\i[a]\![anim,clear,ch]onal \i[ch]\![anim,clear,a]affect\i[a]\![anim,clear,ch]s like thi\i[ch]\![anim,clear,a]s. \w5\s[71]\i[a]I sup\i[o]\![anim,clear,a]pose \i[ch]\![anim,clear,o]you'r\i[au]\![anim,clear,ch]e not\i[o]\![anim,clear,au] most\i[a]\![anim,clear,o] peopl\i[o]\![anim,clear,a]e though\i[base]\![anim,clear,o], hmm?\e"
+		
+		functiontalk
+	}
+ }
+
+ 
+ //---- OnBIFFComplete ---------------------------------------------------------------
+ //After they've succeeded in checking your mail, they'll report back with how many new emails you have. Replace the dialogue with whatever would be character appropriate.
+ 
+OnBIFFComplete
+ {
+	if reference0 == 0 
+ 	{
+ 		"\0\s[32]\i[a]Ther\i[au]\![anim,clear,a]e was\i[ch]\![anim,clear,au]n't e\i[a]\![anim,clear,ch]ven anyth\i[ch]\![anim,clear,a]ing \i[a]\![anim,clear,ch]in it\i[ch]\![anim,clear,a]! \w5\s[130]\i[o]\i[armcross]You \i[ch]\![anim,clear,o]just\i[a]\![anim,clear,ch] enjo\i[o]\![anim,clear,a]y wast\i[a]\![anim,clear,o]ing my t\i[ch]\![anim,clear,a]ime, \i[a]\![anim,clear,ch]don't\i[au]\![anim,clear,a] you?\i[ch]\![anim,clear,au]\e"
+	}
+	elseif reference0 == 1
+ 	{
+ 		"\0\s[70]\i[au]One s\i[a]\![anim,clear,au]ingul\i[ch]\![anim,clear,a]ar n\i[o]\![anim,clear,ch]ew e\i[a]\![anim,clear,o]mail\i[ch]\![anim,clear,a]. \w5\s[171]\i[au]Have\i[ch]\![anim,clear,au] you\i[a]\![anim,clear,ch] made\i[ch]\![anim,clear,a] a ne\i[o]\![anim,clear,ch]w fri\i[a]\![anim,clear,o]end recently\i[ch]\![anim,clear,a]?\e"
+	}
+	elseif reference0 > 30
+	{
+		"\0\s[170]\i[a]%(reference0) \i[ch]\![anim,clear,a]unre\i[a]\![anim,clear,ch]ad emails.\i[ch]\![anim,clear,a] \w5\s[0]\i[o]Do you c\i[a]\![anim,clear,o]heck \i[ch]\![anim,clear,a]this\i[a]\![anim,clear,ch] accou\i[ch]\![anim,clear,a]nt a\i[a]\![anim,clear,ch]t all?\i[ch]\![anim,clear,a]\e"
+	}
+ 	else
+	{
+		"\0\s[170]\i[base]Mmm. \w5\i[a]\![anim,clear,base]%(reference0) \i[ch]\![anim,clear,a]unre\i[a]\![anim,clear,ch]ad emails.\i[ch]\![anim,clear,a] \w5\s[132]\i[a]\i[armcross]Happy\i[o]\![anim,clear,a] now?\i[ch]\![anim,clear,o]\e"
+ 	}
+}
+
+ //---- OnBIFFFailure ---------------------------------------------------------------
+ //Various error messages that can happen when your ghost tries to connect to an email account. Replace the dialogue as appropriate.
+ 
+OnBIFFFailure
+ {
+	if reference0 == "timeout" //If the connection times out.
+ 	{
+ 		"\0\s[170]\i[a]Ah, yo\i[o]\![anim,clear,a]ur co\i[ch]\![anim,clear,o]nnec\i[a]\![anim,clear,ch]tion timed o\i[ch]\![anim,clear,a]ut. \w5\s[133]\i[au]\i[armcross]What\i[ch]\![anim,clear,au] a s\i[a]\![anim,clear,ch]hame.\i[base]\![anim,clear,a]\e"
+	}
+ 	elseif reference0 == "kick" //If the account blocks the ghost from accessing it. I think gmail may do this at first to try and protect your account from unapproved applications using it. It gives you the option to change the setting in the warning email they send you about it.
+	{
+		"\0\s[30]\i[au]Aww, \i[o]\![anim,clear,au]your \i[ch]\![anim,clear,o]email\i[a]\![anim,clear,ch] prov\i[o]\![anim,clear,a]ider\i[a]\![anim,clear,o] has b\i[ch]\![anim,clear,a]lock\i[a]\![anim,clear,ch]ed my a\i[ch]\![anim,clear,a]ccess\i[a]\![anim,clear,ch] to the\i[ch]\![anim,clear,a] acco\i[au]\![anim,clear,ch]unt!\i[ch]\![anim,clear,au] \w5\s[234]\i[ch]\i[armcross]Well, \i[a]\![anim,clear,ch]that'\i[o]\![anim,clear,a]s no\i[a]\![anim,clear,o] fun\i[ch]\![anim,clear,a] at \i[o]\![anim,clear,ch]all.\i[ch]\![anim,clear,o]\e"
+ 	}
+	elseif reference0 == "defect" //If the information put into the POP menu is wrong.
+ 	{
+ 		"\0\s[0]\i[o]Your\i[ch]\![anim,clear,o] ema\i[a]\![anim,clear,ch]il acc\i[ch]\![anim,clear,a]ount \i[o]\![anim,clear,ch]was s\i[a]\![anim,clear,o]et u\i[base]\![anim,clear,a]p inc\i[a]\![anim,clear,base]orrectly\i[ch]\![anim,clear,a]. \w5\s[100]\i[a]\i[armup]Perhaps\i[o]\![anim,clear,a] you\i[au]\![anim,clear,o] ough\i[ch]\![anim,clear,au]t to\i[a]\![anim,clear,ch] try res\i[ch]\![anim,clear,a]ettin\i[a]\![anim,clear,ch]g it?\i[ch]\![anim,clear,a]\w8\![open,configurationdialog]\e"
+		
+		//Note that this ends with \![open,configurationdialog]. This will open up the preferences menu I described above automatically. More on \! functions in the walkthrough. You can delete the \! tag here if you want to.
+	}
+ 	else //if there's some other kind of error.
+	{
+		"\0\s[70]\i[au]Aww, \i[ch]\![anim,clear,au]it sa\i[a]\![anim,clear,ch]ys here\i[ch]\![anim,clear,a] ther\i[au]\![anim,clear,ch]e's s\i[o]\![anim,clear,au]ome s\i[ch]\![anim,clear,o]ort o\i[a]\![anim,clear,ch]f err\i[ch]\![anim,clear,a]or! \w5\s[171]\i[a]'%(reference[0])', \i[ch]\![anim,clear,a]it s\i[a]\![anim,clear,ch]ays. \i[ch]\![anim,clear,a]\w6\s[232]\i[ch]\i[armcross]Well\i[a]\![anim,clear,ch], tha\i[ch]\![anim,clear,a]t's a\i[a]\![anim,clear,ch] disa\i[o]\![anim,clear,a]ppoint\i[ch]\![anim,clear,o]ment.\e"
+ 	}
+}
+
+
+ //**** Network Update *****************************************************************
+ //The following functions are for the Network Update of your ghost, where it will connect to your website, check for new files, and update itself. This is a handy feature, but tricky to set up. If you have no intention of using Network Update, you can disregard these, but it won't hurt to fill them out anyway just in case. More details about how to set up Network Update are in the walkthrough (http://www.ashido.com/ukagaka/).
+ 
+ //Replace the dialogue in the next set of functions as appropriate. You can easily test these messages using the Developer panel. Go to Open at the bottom of it and choose one of the four Update Event options to simulate a Ghost's update process. I highly recommend doing this at LEAST once if you're going to use this feature to make sure it flows well.
+
+ 
+OnUpdateBegin
+ {
+	 if sleeping == 1
+	 {
+		sleeping = 0
+		sitting = 0
+
+		sleeptimer = 0
+		waketimer = 1
+		minsincewake = 0
+		"\s[80]\i[0]GhhHUH—!\n\n[half]\w4\s[24]\i[a]What\i[ch]\![anim,clear,a]—\w4\s[23]\i[a]where—\n\n[half]\w4\s[0]\i[ch]D-di\i[a]\![anim,clear,ch]d you\i[o]\![anim,clear,ch] nee\i[a]\![anim,clear,o]d somet\i[ch]\![anim,clear,a]hing???\n\n[half]\w8\w8\e"
+	 }
+	 --
+	 if updatedonce == 0
+	 {
+		updatedonce = 1
+		"\0\s[0]\i[a]Update me\i[ch]\![anim,clear,a]...? \w5\s[62]\i[a]But w\i[ch]\![anim,clear,a]hat \i[a]\![anim,clear,ch]are \i[o]\![anim,clear,a]you \i[ch]\![anim,clear,o]keepi\i[base]\![anim,clear,ch]ng me\i[ch]\![anim,clear,base] up \i[a]\![anim,clear,ch]to d\i[o]\![anim,clear,a]ate \i[a]\![anim,clear,o]with?\i[ch]\![anim,clear,a]\w8\e"
+	 }
+	 else
+	 {
+		 "\0\s[1]\i[o]Oh. \![anim,clear,o]\w5\s[70]\i[a]What is \i[ch]\![anim,clear,a]it n\i[o]\![anim,clear,ch]ow..\i[ch]\![anim,clear,o].?\w8\e"
+	 }
+ }
+
+ //---- OnUpdateReady ---------------------------------------------------------
+ //If the ghost finds new files to update with.
+ 
+OnUpdateReady
+ {
+ 
+	reference0++ //makes sure it starts at 1 instead of 0
+	
+    "\s[70]\i[o]Ooh... \w2\s[71]\i[ch]looks\i[a]\![anim,clear,ch] like th\i[ch]\![anim,clear,a]ere i\i[a]\![anim,clear,ch]s som\i[o]\![anim,clear,a]ethin\i[ch]\![anim,clear,o]g new\i[o]\![anim,clear,ch] aft\i[a]\![anim,clear,o]er all.\i[ch]\![anim,clear,a]\w8\e"
+	
+	//reference0 here storing the number of new files. You don't have to use it if you don't want to.
+ }
+
+
+//---- OnUpdateComplete -------------------------------------------------------------
+//When the ghost has finished the update process.
+
+OnUpdateComplete
+ {
+	if reference0 == "none" //if the ghost had nothing to update with
+ 	{
+ 		"\0\s[232]\i[armcross]\i[a]Ah. \i[base]\![anim,clear,a]\w5\s[133]\i[au]\i[armcross]Noth\i[ch]\![anim,clear,au]ing t\i[o]\![anim,clear,ch]o up\i[a]\![anim,clear,o]date w\i[ch]\![anim,clear,a]ith.\e"
+	}
+ 	else //if the ghost has updated successfully
+	{
+		"\s[201]\i[a]Done.\i[ch]\![anim,clear,a]\e"
+ 	}
+}
+
+ //---- OnUpdateFailure -------------------------------------------------------------
+ //Error messages if the update process fails in some way.
+ 
+OnUpdateFailure
+ {
+	 _file = SPLITPATH(reference1)[2] + SPLITPATH(reference1)[3] //This gets the name and extension of the offending file
+	 
+	 
+	if reference0 == "timeout" //if the connection times out
+ 	{
+ 		"\0\s[32]\i[a]\i[armcross]The c\i[o]\![anim,clear,a]onne\i[a]\![anim,clear,o]ction\i[ch]\![anim,clear,a] tim\i[a]\![anim,clear,ch]ed out.\i[ch]\![anim,clear,a] \w5\s[262]\i[o]For \i[ch]\![anim,clear,o]the \i[a]\![anim,clear,ch]recor\i[ch]\![anim,clear,a]d, I \i[a]\![anim,clear,ch]had n\i[ch]\![anim,clear,a]othin\i[au]\![anim,clear,ch]g to \i[ch]\![anim,clear,au]do wi\i[o]\![anim,clear,ch]th it\i[ch]\![anim,clear,o]!\e"
+	}
+ 	elseif reference0 == "md5 miss" //This is the final message displayed when you've run into an md5 error below at some point.
+	{
+		"\0\s[71]\i[ch]It sa\i[a]\![anim,clear,ch]ys here t\i[ch]\![anim,clear,a]hat \i[a]\![anim,clear,ch]a hash value \i[ch]\![anim,clear,a]does\i[au]\![anim,clear,ch]n't \i[ch]\![anim,clear,au]matc\i[a]\![anim,clear,ch]h...\i[ch]\![anim,clear,a] \w5\s[101]\i[a]I'm n\i[o]\![anim,clear,a]o co\i[a]\![anim,clear,o]mputer \i[ch]\![anim,clear,a]scien\i[a]\![anim,clear,ch]tist,\i[ch]\![anim,clear,a] but\s[201]\i[a]\i[armup] that\i[ch]\![anim,clear,a] soun\i[a]\![anim,clear,ch]ds bad\i[ch]\![anim,clear,a]. \w5\s[61]\i[o]Perha\i[a]\![anim,clear,o]ps yo\i[ch]\![anim,clear,a]u sho\i[o]\![anim,clear,ch]uld c\i[au]\![anim,clear,o]ontac\i[ch]\![anim,clear,au]t Xah\i[a]\![anim,clear,ch]lia ab\i[ch]\![anim,clear,a]out \i[a]\![anim,clear,ch]it. \i[ch]\![anim,clear,a]\w5\s[161]\i[ch]\i[armside]He's \i[au]\![anim,clear,ch]not t\i[ch]\![anim,clear,au]he b\i[a]\![anim,clear,ch]est at \i[ch]\![anim,clear,a]this,\i[a]\![anim,clear,ch] really\i[ch]\![anim,clear,a].\e"
+ 	}
+	else //for other errors
+ 	{
+ 		"\0\s[70]\i[ch]It se\i[a]\![anim,clear,ch]ems \i[o]\![anim,clear,a]some \i[au]\![anim,clear,o]kind\i[ch]\![anim,clear,au] of \i[a]\![anim,clear,ch]'%(reference0)' error i\i[ch]\![anim,clear,a]s sto\i[au]\![anim,clear,ch]pping\i[a]\![anim,clear,au] me\i[ch]\![anim,clear,a]. \w5\s[132]\i[o]\i[armcross]You \i[ch]\![anim,clear,o]shou\i[a]\![anim,clear,ch]ld as\i[ch]\![anim,clear,a]k tha\i[a]\![anim,clear,ch]t gay little f\i[ch]\![anim,clear,a]rien\i[au]\![anim,clear,ch]d of \i[a]\![anim,clear,au]yours a\i[ch]\![anim,clear,a]bout it\i[au]\![anim,clear,ch], pro\i[ch]\![anim,clear,au]bably.\e"
+	}
+ }
+
+
+ //---- OnUpdate.OnDownloadBegin ------------------------------------------------
+ //This dialogue plays when they begin downloading a new file. WARNING: if you have big plans for your ghost and are going to make a lot of new image files for it (like... i do, cough) at some point, you're going to want to make these messages very brief, if you even have them at all. The reason is because the user will see these messages for EVERY individual file that they have to download, and if you have, say, 50 pna files in the queue, they will see this dialogue 50 times. Not only that, but displaying the dialogue takes some time, so it also extends the download process.
+ //If you aren't planning on adding a ton of files at any point, or are only intending to update the .dic files which will be at most a handful of files, then you can go ahead and put a short message in here. But if your ghost is going to grow in leaps and bounds as you work on it, try and keep these messages as brief as possible (or again, just make it "" to have there be no message at all) to make the process that much faster for your user.
+ 
+OnUpdate.OnDownloadBegin
+{
+	//god bless you, zarla
+	"\_q\f[italic,true](Downloading %(reference0)...)\f[italic,false]\n\n"
+	--
+	Update_Process = TOINT(reference1) + 1
+	Update_Total = TOINT(reference2) + 1
+	Update_Remaining = Update_Total - Update_Process
+
+	//defining starting points
+	PointA = 1
+	PointB = 1
+
+	//defining text buffers beforehand, otherwise they don't display right
+	_txt = ""
+
+	//loop calculates how many check boxes to display based on the variables above
+
+	while PointA <= Update_Process
+	{
+		_txt += "☑"
+		PointA++
+	}
+	//see above except for blank boxes
+	while PointB <= Update_Remaining
+	{
+		_txt += "□"
+		PointB++
+	}
+	--
+	//using the text buffers to display the correct number of boxes
+	"%(_txt)\n\n%(Update_Process) of %(Update_Total)"
+	--
+	//flavortext
+	"\s[170]"
+	--
+	"\i[base]"
+	"\i[toingout]"
+	--
+	if "aitalk" _in_ reference0 //this is checking to see what kind of files are being downloaded. In this case, it's looking for files called aitalk in the download queue.
+	{
+		"\n\n\0\f[italic,true](You get the feeling he might have some new things to say now.)\e"
+	}
+	elseif "menu" _in_ reference0
+	{
+		"\n\n\0\f[italic,true](You get the feeling the menus might have changed.)\e"
+	}
+	elseif "surfaces" _in_ reference0
+	{
+		"\n\n\0\f[italic,true](You get the feeling he might look a little different now.)\e"
+	}
+	elseif "mouse" _in_ reference0
+	{
+		"\n\n\0\f[italic,true](You get the feeling he might respond differently to physical interaction now.)\e"
+	}
+	elseif "bootend" _in_ reference0
+	{
+		"\n\n\0\f[italic,true](You get the feeling he might say something different when you boot him or close him now.)\e"
+	}
+	else //for files not specified above
+	{
+		""
+	}
+	--
+	"\w5\e"
+}
+
+ //---- OnUpdate.OnMD5CompareBegin ---------------------------------------------------
+ //This checks the hash value of the files in the directory and the files listed in updates.dau, I believe. It will do this for every file the user downloads, so I again remind you of my warning above! For every file they download, they will have to go through three sets of unique dialogue, and it can get old fast. Not to mention it slows things down a lot. Again, I would recommend keeping this very brief, if not just replacing it with "" instead.
+ 
+OnUpdate.OnMD5CompareBegin
+{
+	""
+}
+
+ //---- OnUpdate.OnMD5CompareComplete --------------------------------------------------
+ //After they've checked the MD5 value and it matches. See above about the length of this message.
+ 
+OnUpdate.OnMD5CompareComplete
+ {
+	""
+}
+
+ //---- OnUpdate.OnMD5CompareFailure ---------------------------------------------------
+ //If the MD5 values don't match, meaning if the file is missing or damaged or incomplete in some way. If you follow my Network Update directions carefully, this shouldn't come up very often, but don't be surprised if you run into it every now and then by forgetting a file here or there.
+ 
+OnUpdate.OnMD5CompareFailure
+{
+	comparefail
+}
+
+comparefail : sequential
+{
+	"\0\s[70]\i[o]Oh? \i[base]\![anim,clear,o]\w5\i[a]\![anim,clear,base]That's strange\i[ch]\![anim,clear,a].\w8\w8\e"
+	"\0\s[70]\i[base]Hmm...\w8\w8\e"
+	"\0\s[70]\i[a]%(reference0)\i[ch]\![anim,clear,a] isn\i[a]\![anim,clear,ch]'t mat\i[ch]\![anim,clear,a]ching. \w5\s[170]\i[a]That seem\i[ch]\![anim,clear,a]s li\i[au]\![anim,clear,ch]ke a pr\i[a]\![anim,clear,au]oblem\i[ch]\![anim,clear,a]...\e"
+}
+ 
+ 
+ //**** Headlines and RSS Feeds *********************************************************
+ //This section has to do with the RSS feeds option on your ghost. If you drag and drop a url on them, they'll add it to a list you can access via the right-click menu, and they'll tell you the last set of updates for the site. This works best with RSS feeds I think, but you can experiment with other sites to see how it works.
+ //The headlines you see under the tab are in the headline folder under your base SSP install. So it'd be SSP\headlines. You should see the folders for each linked headline in there. I've very rarely ever messed with them or used them. Likewise, your RSS feeds you've added will be under SSP\rss and I don't think that option will appear in the headlines/RSS tab until you add an RSS feed to a ghost. If you want to clear your RSS feeds or headlines, just delete either of those two folders.
+ 
+
+ //---- OnHeadlinesenseBegin -----------------------------------------------------------
+ //This dialogue comes up when you select something in your RSS feed as an intro, like the other On[Thing]Begin things we've seen so far. Replace as you need.
+ 
+OnHeadlinesenseBegin
+{
+	 if sleeping == 1
+	 {
+		 sleeping = 0
+		sitting = 0
+		
+		sleeptimer = 0
+		waketimer = 1
+		minsincewake = 0
+		 "\s[80]\i[0]GhhHUH—!\n\n[half]\w4\s[24]\i[a]What\i[ch]\![anim,clear,a]—\w4\s[23]\i[a]where—\n\n[half]\w4\s[0]\i[ch]D-di\i[a]\![anim,clear,ch]d you\i[o]\![anim,clear,ch] nee\i[a]\![anim,clear,o]d somet\i[ch]\![anim,clear,a]hing???\n\n[half]\w8\w5..."
+	 }
+	 --
+		"\0\s[62]\i[a]%(reference0), \i[ch]\![anim,clear,a]eh?\e"
+}
+
+ //---- OnHeadlinesense.OnFind --------------------------------------------------------
+ //This actually displays the feed. My set-up for it is pretty simple but gets the job done, it just has the name of the feed, a line space, then a list of links. You shouldn't have to edit any of these and I probably wouldn't honestly.
+ 
+OnHeadlinesense.OnFind
+{
+	//----  What page You're on
+ 	if reference2 == "First" || reference2 == "First and Last"
+	{
+ 		//---- First page
+		"\0\b2\s[0]%(reference0):"
+ 	}
+	elseif reference2 == "Next"
+ 	{
+		//---- Second page
+ 		"\0\b2\s[0]%(reference0):"
+	}
+ 	elseif reference2 == "Last"
+	{
+ 		//---- Last page
+		"\0\b2\s[0]%(reference0):"
+ 	}
+	--
+ 	//---- Headlines
+	"\n\n%reference3\n"
+ 	--
+	//---- Pages
+ 	if reference2 == "First" || reference2 == "Next"
+	{
+ 		//---- Bottom buttons
+		"\![*]\q[Next,] - \![*]\q[Stop,Headline_Cancel]\e"
+ 	}
+	else
+ 	{
+		//---- Bottom buttons
+ 		"\![*]\q[Stop,Headline_Cancel]\e"
+ 	}
+	
+}
+
+
+Select.Headline_Cancel
+{
+	""
+	//Actually I take that back, you can change this line of dialogue here for when you're done looking at a headline to something else if you want.
+}
+
+ //---- OnHeadlinesenseComplete -------------------------------------------------------
+ //This is an odd function. As far as I can gather, this is if the headline information gathering was successful, but there's no new information to report. Possibly if none of the feeds have updated? I'm a little fuzzy on this one.
+ 
+OnHeadlinesenseComplete
+ {
+	"\0\s[0]\f[italic,true](No update. %(reference0).)\f[italic,false]\e"
+	//reference0 here supposedly always stores the value no update? Again this isn't hugely clear from what I can see. Anyway, this dialogue has never come up for me while using a ghost, so perhaps someone else who runs into it can offer more clarity. For now, you can leave it as is, or write up something else in here if you like.
+ }
+
+ //---- OnHeadlinesenseFailure ---------------------------------------------------------
+ //This one is more clearly for when the ghost can't get the information it needs about the RSS feed in question.
+ 
+OnHeadlinesenseFailure
+  {
+	"\0\s[70]\i[base]Hm. \w6\i[a]I can\i[ch]\![anim,clear,a]'t ge\i[a]\![anim,clear,ch]t it\i[ch]\![anim,clear,a] to \i[o]\![anim,clear,ch]upda\i[a]\![anim,clear,o]te. \i[ch]\![anim,clear,a]\w8\n\n[half]" //This sets up an exchange between the two characters. The final part of the exchange continues below in the if statements.
+ 	--
+	if reference0 == "can't download" //if they can't download the rss feed for some reason
+ 	{
+		"\s[32]\i[o]\i[armcross]For \i[au]\![anim,clear,o]some \i[a]\![anim,clear,au]reas\i[ch]\![anim,clear,a]on, \i[a]\![anim,clear,ch]it re\i[o]\![anim,clear,a]fuses\i[ch]\![anim,clear,o] to d\i[o]\![anim,clear,ch]ownl\i[a]\![anim,clear,o]oad corre\i[ch]\![anim,clear,a]ctly."
+ 	}
+	elseif reference0 == "can't analyze" //if they can't read the file for some reason
+ 	{
+		"\s[62]\i[a]Somet\i[ch]\![anim,clear,a]hing \i[a]\![anim,clear,ch]abou\i[o]\![anim,clear,a]t the\i[ch]\![anim,clear,o] inf\i[a]\![anim,clear,ch]ormat\i[ch]\![anim,clear,a]ion \i[a]\![anim,clear,ch]the program has isn'\i[ch]\![anim,clear,a]t cor\i[a]\![anim,clear,ch]rect. \i[ch]\![anim,clear,a]\w5\s[61]\i[a]\i[armside]Perhaps t\i[ch]\![anim,clear,a]he f\i[a]\![anim,clear,ch]eed i\i[ch]\![anim,clear,a]tself\i[a]\![anim,clear,ch] has bro\i[o]\![anim,clear,a]ken,\i[ch]\![anim,clear,o] or be\i[o]\![anim,clear,ch]en m\i[a]\![anim,clear,o]oved some\i[ch]\![anim,clear,a]where\i[a]\![anim,clear,ch] else.\i[ch]\![anim,clear,a] \w5\s[260]\i[o]You \i[ch]\![anim,clear,o]coul\i[a]\![anim,clear,ch]d try re-a\i[ch]\![anim,clear,a]dding\i[a]\![anim,clear,ch] it,\i[ch]\![anim,clear,a] or d\i[o]\![anim,clear,ch]elet\i[a]\![anim,clear,o]ing t\i[ch]\![anim,clear,a]he fo\i[a]\![anim,clear,ch]lder\i[o]\![anim,clear,a] for \i[ch]\![anim,clear,o]it i\i[o]\![anim,clear,ch]n SSP\i[a]\![anim,clear,o]'s rs\i[ch]\![anim,clear,a]s fol\i[a]\![anim,clear,ch]der and r\i[ch]\![anim,clear,a]e-ad\i[a]\![anim,clear,ch]ding that.\i[ch]\![anim,clear,a]..\w5\n\n[half]\f[italic,true](You ask him how he knows what SSP is called.)\n\n[half]\w5\f[italic,false]\s[0]\i[a]What wha\i[ch]\![anim,clear,a]t is\i[o]\![anim,clear,ch] call\i[ch]\![anim,clear,o]ed?"
+ 	}
+	else //other errors
+ 	{
+		"\s[131]\i[ch]\i[armcross]I'm \i[au]\![anim,clear,ch]not s\i[o]\![anim,clear,au]ure \i[a]\![anim,clear,o]why..\i[ch]\![anim,clear,a]. \w5\s[230]\i[au]\i[armcross]how annoying\i[ch]\![anim,clear,au]."
+ 	}
+	--
+ 	"\e" //And here is the final /e, so you don't need to include it in the if statements above. Another one of the very rare cases this occurs.
+}
+
+
+//**** Ghost Creation and Updating ******************************************************
+//These next few are related to creating updates2.dau and .nar files for your ghosts. You'll want to at least make a .nar to distribute your ghost, and if you're going to be using Network Update, you'll also want to make updates2.dau as well. It's unlikely that anyone other than you will see these messages, but they can be fun to add some color to while you're developing. I gave Temmie some silly ones and they make me smile each time I update her.
+//Primarily, you will see these messages when you're creating your updates file or updating your ghost.nar file. More on this on the walkthrough page. However, you can drag and drop another ghost's folder onto them and they'll also create a nar for that as well, if for some reason you want to do that.
+
+
+ //---- OnUpdatedataCreating -----------------------------------------------------------
+ //This will begin the creation of the updates2.dau file. Not unlike the other beginning functions you've seen throughout this file. Replace with whatever you like.
+ 
+OnUpdatedataCreating
+ {
+	"\0\f[italic,true](Creating update file...)\e"
+ }
+
+ //---- OnUpdatedataCreated -------------------------------------------------------------
+ //After the updates2.dau file has been successfully created. Replace with whatever.
+ 
+OnUpdatedataCreated
+ {
+	"\0\f[italic,true](File created.)\e"
+ }
+
+ //---- OnNarCreating ------------------------------------------------------------------
+ //Along the same lines, this is when they begin creating a .nar file for your ghost. .nars are the format most ghosts will be in, something similar to a .zip file, and this is the format you'll be distributing your ghost in most likely. Replace the dialogue with whatever you like.
+ 
+OnNarCreating
+ {
+	"\0\f[italic,true](Creating .nar file...)\e"
+ }
+
+ //---- OnNarCreated -------------------------------------------------------------------
+ //After the nar file has been successfully created.
+ 
+OnNarCreated
+ {
+	"\0\f[italic,true](The .nar has been created.)\e"
+	//reference0 here will be the filename of the nar you just created. It should drop the nar in the folder where all your ghosts are listed, ssp\ghost\.
+ }
+
+ //****　Clock Synchronization　**********************************************************
+//**** 미카 (http://homepage2.nifty.com/ko-ki/)의 사전을 참고했습니다．감사＞こ 나무 성
+//This set of functions was done by the above Korean coder, I think. I'll leave their comment there untouched. 
+//If you right click your ghost and go into the Utilities menu, there's an option called NTP Time Sync. That's what this is for!
+ 
+
+ //----OnSNTPBegin ------------------------------------------------------------------
+ //As with the others you've seen above, this is the beginning bit of dialogue for this process.
+ 
+OnSNTPBegin
+ {
+	if sleeping == 1
+	{
+		sleeping = 0
+		sitting = 0
+		
+		sleeptimer = 0
+		waketimer = 1
+		minsincewake = 0
+		"\s[80]\i[0]GhhHUH—!\n\n[half]\w4\s[24]\i[a]What\i[ch]\![anim,clear,a]—\w4\s[23]\i[a]where—\n\n[half]\w4\s[0]\i[ch]D-di\i[a]\![anim,clear,ch]d you\i[o]\![anim,clear,ch] nee\i[a]\![anim,clear,o]d somet\i[ch]\![anim,clear,a]hing???\n\n[half]\w8\w6"
+	}
+	--
+	"\0\s[62]\i[ch]Check\i[o]\![anim,clear,ch] you\i[au]\![anim,clear,o]r clo\i[ch]\![anim,clear,au]ck? \w8"
+	--
+	if workformeboy == 1
+	{
+		"\s[162]\i[au]Are \i[o]\![anim,clear,au]you r\i[a]\![anim,clear,o]unnin\i[ch]\![anim,clear,a]g ou\i[au]\![anim,clear,ch]t of \i[ch]\![anim,clear,au]idea\i[a]\![anim,clear,ch]s for me\i[ch]\![anim,clear,a]nial \i[o]\![anim,clear,ch]task\i[a]\![anim,clear,o]s to \i[ch]\![anim,clear,a]force\i[a]\![anim,clear,ch] me \i[o]\![anim,clear,a]into?\i[ch]\![anim,clear,o] \w5\s[170]\i[a]Alrig\i[ch]\![anim,clear,a]ht, I\i[a]\![anim,clear,ch]'ll \i[o]\![anim,clear,a]use \i[a]\![anim,clear,o]%(reference0).\i[ch]\![anim,clear,a]\e"
+	}
+	else
+	{
+		"\s[133]\i[a]\i[armcross]I sup\i[base]\![anim,clear,a]pose\i[o]\![anim,clear,base] I c\i[a]\![anim,clear,o]an d\i[ch]\![anim,clear,a]o t\i[o]\![anim,clear,ch]hat.\i[ch]\![anim,clear,o].. \w5\s[170]\i[a]I'll\i[ch]\![anim,clear,a] just\i[o]\![anim,clear,ch] use \i[a]\![anim,clear,o]%(reference0)\i[ch]\![anim,clear,a].\e"
+	}
+	//%(reference0) here is the site they'll be using to check your clock. I wouldn't worry too much about what the site is or where it's defined, it should be accurate. Replace the dialogue with what you need, you don't have to use reference0 if you don't want to.
+ }
+
+
+ //----　OnSNTPCompare----------------------------------------------------------
+ //Now the ghost is going to compare the current time of your computer's system to the time of the site they connected to. Most of this you don't have to touch, just replace the dialogue as indicated.
+ 
+OnSNTPCompare
+{
+ 	"\f[italic,true]Retrieved Time: %reference1[1]/%reference1[2]/%reference1[0] %reference1[3]:%reference1[4]:%reference1[5]\w2\n/
+	Your Time: %reference2[1]/%reference2[2]/%reference2[0] %reference2[3]:%reference2[4]:%reference2[5]\w2\n/
+ 	\n\f[italic,false]"
+	--
+ 	if reference3 == 0 //if your clock is already accurate.
+	{
+ 		"\0\s[201]\i[o]Your \i[au]\![anim,clear,o]cloc\i[ch]\![anim,clear,au]k is \i[a]\![anim,clear,ch]fine.\i[ch]\![anim,clear,a]\e" //replace this with whatever message you like.
+	}
+ 	else //if your clock doesn't match
+	{
+ 		"\0\s[62]\i[o]Oh, y\i[ch]\![anim,clear,o]our \i[o]\![anim,clear,ch]cloc\i[au]\![anim,clear,o]k is\i[ch]\![anim,clear,au] out\i[a]\![anim,clear,ch] of sy\i[ch]\![anim,clear,a]nc. \w5\s[161]\i[base]I'm g\i[a]\![anim,clear,base]uess\i[ch]\![anim,clear,a]ing y\i[o]\![anim,clear,ch]ou c\i[a]\![anim,clear,o]an't \i[ch]\![anim,clear,a]be bo\i[au]\![anim,clear,ch]there\i[ch]\![anim,clear,au]d to\i[o]\![anim,clear,ch] fix\i[a]\![anim,clear,o] it \i[ch]\![anim,clear,a]your\i[a]\![anim,clear,ch]self..\i[ch]\![anim,clear,a].\n\n[half]/
+		![*]\q[Fix it,OnSNTPEXECUTE]\n/
+ 		\![*]\q[Leave it alone,OnSNTPCANCEL]\e"
+	}
+}
+
+ //----　OnSNTPEXECUTE ------------------------------------------------------------------
+ //After they've fixed your clock. Note the \6 tag - that's what actually changes the clock. Do not remove that tag. Replace the rest with what you want.
+ 
+OnSNTPEXECUTE
+ {
+	"\0\s[132]\i[a]\i[armcross]Very wel\i[ch]\![anim,clear,a]l. \w5\s[260]\i[ch]One m\i[o]\![anim,clear,ch]oment\i[ch]\![anim,clear,o]... \n\n[half]\w8\w8\w6\6\s[132]\i[a]\i[armcross]Done.\i[ch]\![anim,clear,a] \w5\s[200]\i[o]You'\i[a]\![anim,clear,o]re welc\i[base]\![anim,clear,a]ome.\e"
+ }
+
+ //----　OnSNTPCANCEL ------------------------------------------------------------------
+ //If you decide not to change your clock when they tell you it doesn't match. Replace with what you want.
+ 
+OnSNTPCANCEL
+ {
+	"\0\s[131]\i[ch]\i[armcross]\f[italic,true](He gives a scoff of annoyance.)\e"
+ }
+
+ //----　OnSNTPFailure ------------------------------------------------------------------
+ //If they can't change the clock for some reason, possibly because the site timed out but it could be anything. Replace with what you want.
+ 
+OnSNTPFailure
+ {
+	"\0\s[70]\i[base]Hm. \w5\s[71]\i[au]Some\i[ch]\![anim,clear,au] kin\i[o]\![anim,clear,ch]d of\i[a]\![anim,clear,o] error \i[ch]\![anim,clear,a]is ke\i[a]\![anim,clear,ch]eping m\i[ch]\![anim,clear,a]e fro\i[o]\![anim,clear,ch]m fi\i[a]\![anim,clear,o]xing i\i[ch]\![anim,clear,a]t. \w5\s[232]\i[a]\i[armcross]I'll \i[au]\![anim,clear,a]not b\i[ch]\![anim,clear,au]e bl\i[a]\![anim,clear,ch]amed.\i[ch]\![anim,clear,a]\e"
+ }
+
+
+ //--OnDisplayChange----------------------------------------------------------------
+ //This is when you change the resolution of your monitor while your ghost is running. Don't mess with any of this, it should be fine as is.
+ 
+OnDisplayChange
+{
+	displaybpp    = reference0
+ 	displaywidth  = reference1
+	displayheight = reference2
+}
+
+
+
+ //---- OnScreenSaverStart -------------------------------------------------------
+ //This happens if your ghost is running when your screensaver starts up. I've never got this to trigger but I love this idea, and I feel like there's a way to do it I haven't figured out yet. So you can skip these for now if you want, but if I do ever get it working, I'll come back and make a note of it.
+ 
+OnScreenSaverStart
+{
+	if sleeping == 1
+	{
+		if sitting == 0
+		{
+			"\s[96]"
+		}
+		--
+		"Zzz...\e"
+	}
+	else
+	{
+		"\0\s[60]\i[o]!!!!!\e"
+	}
+}
+
+ //---- OnScreenSaverEnd -------------------------------------------------------
+ //When you wiggle your mouse and stop your screensaver.
+ 
+OnScreenSaverEnd
+{
+	if sleeping == 1
+	{
+		if sitting == 0
+		{
+			"\s[96]"
+		}
+		"Zz... \w8hmmn... \w8zzz...\e"
+	}
+	else
+	{
+	"\0\s[32]\i[o]\i[armcross]How \i[a]\![anim,clear,o]fasci\i[ch]\![anim,clear,a]nati\i[a]\![anim,clear,ch]ng..\i[ch]\![anim,clear,a]. \w5\s[133]\i[ch]I nev\i[a]\![anim,clear,ch]er c\i[o]\![anim,clear,a]onsid\i[au]\![anim,clear,o]ered \i[ch]\![anim,clear,au]what\i[a]\![anim,clear,ch] a screensa\i[ch]\![anim,clear,a]ver c\i[a]\![anim,clear,ch]ould \i[ch]\![anim,clear,a]look \i[o]\![anim,clear,ch]like\i[au]\![anim,clear,o] from\i[ch]\![anim,clear,au] the \i[o]\![anim,clear,ch]pers\i[ch]\![anim,clear,o]pecti\i[a]\![anim,clear,ch]ve of the scr\i[ch]\![anim,clear,a]een.\e"
+	}
+}
+
+
+ //---- OnApplicationBoot ---------------------------------------------------------------
+ //This supposedly is for when a program starts but I have honestly never gotten it to work or seen it happen. I wouldn't sweat these three related functions too much.
+ 
+OnApplicationBoot
+ {
+	"\0\f[italic,true](%(reference0) just started.)\e"
+ }
+
+ //---- OnApplicationClose --------------------------------------------------------------
+ //See above, but for the program closing.
+ 
+OnApplicationClose
+ {
+	"\0\f[italic,true](%(reference0) has closed.)\e"
+ }
+
+ //---- OnApplicationFileOpen ----------------------------------------------------------
+ //I believe this is for when the program detailed above opens a document file of some kind.
+ 
+OnApplicationFileOpen
+ {
+	"\0\f[italic,true](Opening %(reference1).)\e"
+ }
+
+
+
+
+ 
+OnBatteryLow
+ {
+	if sleeping == 1
+	{
+		"\0\f[italic,true](Your battery is low... \w5you should probably plug it in soon.)\e"
+	}
+	else
+	{
+		"\0\s[61]\i[o]\i[armside]Your\i[a]\![anim,clear,o] lapt\i[au]\![anim,clear,a]op's\i[a]\![anim,clear,au] batt\i[ch]\![anim,clear,a]ery \i[o]\![anim,clear,ch]is lo\i[ch]\![anim,clear,o]w. \w5\s[161]\i[a]\i[armside]I wou\i[o]\![anim,clear,a]ldn'\i[ch]\![anim,clear,o]t no\i[o]\![anim,clear,ch]rmall\i[ch]\![anim,clear,o]y car\i[a]\![anim,clear,ch]e, bu\i[ch]\![anim,clear,a]t see\s[62]\i[a]ing as I'\i[base]\![anim,clear,a]m cur\i[au]\![anim,clear,base]rentl\i[ch]\![anim,clear,au]y tr\i[a]\![anim,clear,ch]apped \i[ch]\![anim,clear,a]insi\i[a]\![anim,clear,ch]de it\i[ch]\![anim,clear,a]...\e"
+	}
+ }
+ 
+OnBatteryCritical
+{
+	if sleeping == 1
+	{
+		"\0\f[italic,true](Your laptop is about to die... \w5you should really do something about that soon, or you won't get to watch him sleep much longer.)\e"
+	}
+	else
+	{
+	"\0\s[101]\i[o]\i[armup]Your\i[a]\![anim,clear,o] lapt\i[au]\![anim,clear,a]op i\i[ch]\![anim,clear,au]s ab\i[a]\![anim,clear,ch]out \i[o]\![anim,clear,a]to die\i[ch]\![anim,clear,o].\w5\s[0]\i[o]Shou\i[a]\![anim,clear,o]ld I b\i[ch]\![anim,clear,a]e wo\i[a]\![anim,clear,ch]rried\i[ch]\![anim,clear,a] abo\i[a]\![anim,clear,ch]ut thi\i[o]\![anim,clear,a]s, or\i[ch]\![anim,clear,o]...?\e"
+	}
+}
+ 
+//--OnBatteryNotify--------------------------------------------------------------------
+//This I believe checks to see if your laptop is plugged in or not. Originally this bit of code was commented out, so I suspect it may not work. It may need a plug-in of some sort. Either way, you can delete it or fill it out as you like.
+//Actually investigating this, leaving this in makes it so the ghost updates you about whether or not your computer is plugged-in constantly, which makes no sense for desktops. No doubt why it was commented out. You can delete it or just leave it be.
+
+/*
+OnBatteryNotify
+{
+	if reference2 == "online" //If your laptop is plugged in
+	{
+		"\0\s[0]The laptop is plugged in.\e"
+	}
+	elseif reference2 == "offline" //If you unplug your laptop
+	{
+		"\1\s[10]The laptop is not plugged in.\w8\0\s[0]Watch your battery.\e"
+	}
+}
+*/
+
+
+ //--OnShellScaling
+ //This is a function however that you may actually use! Or at least, I often use it when desktop space is at a premium (which it always is on my computer). If you right click the ghost, you can go to Shell Scaling, which lists a number of different percentages. Those are the percentages your ghost can be scaled in size up or down. You can try them out yourself to get an idea of what I mean. I often scale mine down to get them out of the way sometimes. This adds dialogue whenever you change their scale. You don't have to do this if you don't want to, in which case they will just stay silent when you size them up or down. If that's what you want, just delete the whole thing or leave "" instead of any dialogue.
+ 
+OnShellScaling
+{
+	if sleeping == 1
+	{
+		if sitting == 0
+		{
+			"\s[96]"
+		}
+		--
+		"Zzz...\e"
+		"Mmmrf... \w8zz...\e"
+	}
+	else
+	{
+		"\0\s[0]\i[a]What \i[ch]\![anim,clear,a]just \i[a]\![anim,clear,ch]happen\i[ch]\![anim,clear,a]ed?\e"
+		"\0\s[1]\i[o]Ooh! \w5\i[a]\![anim,clear,o]Tingl\i[ch]\![anim,clear,a]y.\e"
+	}
+}
+
+
+//--OnFileDrop2
+
+//OnFileDrop2 handles how your ghost will set an image as the desktop background when someone drags and drops an image on them. You don't need to touch any of the coding here, just replace the dialogue as needed and leave the \q options alone. More about \q options in bootend.dic and in the walkthrough.
+
+OnFileDrop2
+{
+	_filepath = SPLITPATH(reference0)
+	_filename = _filepath[2]
+	_fileext = TOLOWER(_filepath[3])
+	
+	if sleeping == 1
+	{
+		sleeping = 0
+		sitting = 0
+		
+		sleeptimer = 0
+		waketimer = 1
+		minsincewake = 0
+		"\s[80]\i[0]GhhHUH—!\n\n[half]\w4\s[24]\i[a]What\i[ch]\![anim,clear,a]—\w4\s[23]\i[a]where—\n\n[half]\w4\s[0]\i[ch]D-di\i[a]\![anim,clear,ch]d you\i[o]\![anim,clear,ch] nee\i[a]\![anim,clear,o]d somet\i[ch]\![anim,clear,a]hing???\n\n[half]\w8\w8\w4\c"
+	}
+	--
+	case _fileext
+	{
+		when ".jpg", ".jpeg", ".bmp", ".png" //These are the formats your ghost will recognize as image files to set as the background.
+		{
+			Wallpaperfile = reference0
+			
+			"\0\s[70]\i[a]%(_filename)%(_fileext)\i[ch]\![anim,clear,a] is \i[a]\![anim,clear,ch]an im\i[ch]\![anim,clear,a]age. \w5\s[71]\i[a]What \i[o]\![anim,clear,a]do yo\i[au]\![anim,clear,o]u wa\i[ch]\![anim,clear,au]nt m\i[o]\![anim,clear,ch]e to do\i[ch]\![anim,clear,o] wit\i[a]\![anim,clear,ch]h this, exact\i[ch]\![anim,clear,a]ly?\n\n[half]\w5\f[italic,true](You tell him that you want it set as your wallpaper. \w5And that you want it...)\_q\n\n[half]/
+			\![*]\q[Centered,SetWallpaper_0]\n/
+			\![*]\q[Tiled,SetWallpaper_1]\n/
+			\![*]\q[Stretched,SetWallpaper_2]\n\n[half]/
+			\![*]\q[Actually never mind,SetWallpaper_Cancel]\e"
+		}
+		when ".mid", ".wav", ".mp3", ".wma", ".au" //Other file formats you might want to give your ghost a specific response to.
+		{
+			"\0\s[40]\i[a]%(_filename)%(_fileext)\i[ch]\![anim,clear,a] is \i[a]\![anim,clear,ch]an a\i[au]\![anim,clear,a]udio fi\i[ch]\![anim,clear,au]le. \w5\s[143]\i[a]\i[armcross]I don\i[o]\![anim,clear,a]'t b\i[ch]\![anim,clear,o]elie\i[a]\![anim,clear,ch]ve I can\i[ch]\![anim,clear,a] do \i[o]\![anim,clear,ch]anyt\i[a]\![anim,clear,o]hing wi\i[ch]\![anim,clear,a]th t\i[a]\![anim,clear,ch]his..\i[ch]\![anim,clear,a].\e"
+		}
+		others //Any other file format. As a note here, if you drop something ghost-related on them that does not have an install.txt, then they won't install it and will just say this response. If you are testing your balloon or nar files and you get this response instead of a proper installation, you should check and make sure you have an install.txt in the file!
+		{
+			"\s[100]\i[a]What\i[ch]\![anim,clear,a]? \w5\i[a]\![anim,clear,ch]\i[armup]What\i[ch]\![anim,clear,a] is \i[a]\![anim,clear,ch]this?\i[ch]\![anim,clear,a] \w5\s[130]\i[a]\i[armcross]I ca\i[ch]\![anim,clear,a]n't d\i[o]\![anim,clear,ch]o any\i[a]\![anim,clear,o]thing w\i[ch]\![anim,clear,a]ith t\i[a]\![anim,clear,ch]his.\i[ch]\![anim,clear,a]\e"
+		}
+	}
+}
+
+//This set of options sets the wallpaper up. You can replace the dialogue, but make sure to leave the \![set,wallpaper, etc.] tag at the beginning.
+
+Select.SetWallpaper_0
+{
+	"\![set,wallpaper,%(Wallpaperfile),center]\0"
+	--
+	"\s[240]"
+	"\s[161]\i[armside]"
+	"\s[260]\i[armside]"
+	"\s[232]\i[armcross]"
+	"\s[133]\i[armcross]"
+	"\s[101]\i[armup]"
+	"\s[200]\i[armup]"
+	"\s[201]\i[armup]"
+	--
+	"\i[a]Very wel\i[ch]\![anim,clear,a]l.\e"
+}
+Select.SetWallpaper_1
+{
+	"\![set,wallpaper,%(Wallpaperfile),center]\0"
+	--
+	"\s[240]"
+	"\s[161]\i[armside]"
+	"\s[260]\i[armside]"
+	"\s[232]\i[armcross]"
+	"\s[133]\i[armcross]"
+	"\s[101]\i[armup]"
+	"\s[200]\i[armup]"
+	"\s[201]\i[armup]"
+	--
+	"\i[a]Very wel\i[ch]\![anim,clear,a]l.\e"
+}
+Select.SetWallpaper_2
+{
+	"\![set,wallpaper,%(Wallpaperfile),center]\0"
+	--
+	"\s[240]"
+	"\s[161]\i[armside]"
+	"\s[260]\i[armside]"
+	"\s[232]\i[armcross]"
+	"\s[133]\i[armcross]"
+	"\s[101]\i[armup]"
+	"\s[200]\i[armup]"
+	"\s[201]\i[armup]"
+	--
+	"\i[a]Very wel\i[ch]\![anim,clear,a]l.\e"
+}
+Select.SetWallpaper_Cancel
+{
+	"\0\s[171]\i[base]\f[italic,true](You change your mind. \w5\s[230]\i[ch]\i[armcross]He tsks in annoyance.)\e"
+}

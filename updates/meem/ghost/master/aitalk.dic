@@ -1,0 +1,760 @@
+﻿//---------------------------AI Talk--------------------------
+//Alright, this is it! The bread and butter of your ghost. This is where all their random conversations are stored. Of all the .dic files, this is the one you will probably be adding stuff to and updating the most as new dialogue comes to your mind. It is relatively simple in that there aren't many functions or real coding involved with this file, but there are a few cool tricks you can do within randomtalk that can make dialogue with interesting effects, so I'll point them out as we go along.
+
+//I'm going to leave a lot of examples of different types of dialogue in here that you can study if the possibilities they present intrigue you. Study them carefully!
+
+
+//Make sure to read the walkthrough (http://www.ashido.com/ukagaka/) for more details about how to properly format ghost dialogue!
+//I will reiterate that you should be editing these in Notepad++, and in particular, you should set the Language to C (or Java I guess) to properly highlight all the text. It will make things A LOT EASIER for you, trust me! It will also help you keep track of your brackets in case you forget some. If you click on a line with a bracket in Notepad++, it should highlight where the other bracket ends, or turn purple if there's no finishing bracket (which you should definitely fix!)
+//It will also highlight my commented lines in green, so you'll know where they are. Any line beginning with // is a commented line that the code will not read. It's just for your reference!
+
+
+//If you see a big block of commented text you want to uncomment, highlight the text and then hit ctrl-shift-k in Notepad++ and that should uncomment it. Mostly this is intended for advanced users.
+
+/*
+This file has...
+
+AiTalk
+RandomTalk
+any chains you set up
+HourCheck
+OnMinuteChange
+OnSecondChange
+OffscreenTalk
+EndOffscreenTalk
+OnSurfaceRestore
+OnKeyPress
+*/
+
+
+//--OnAiTalk
+//Leave this alone. This is mostly setting up whether or not dialogue is in a chain before it displays.
+
+OnAiTalk
+{
+	if RAND(100) < communicateratio
+ 	{
+ 		StartCommunicate
+	}
+ 	else
+	{
+			if CHAIN.IDName == "" {
+ 				lastTalk = RandomTalk
+			}
+			else {
+				lastTalk = ChainTalk
+			}
+			lastTalk
+	}
+}
+ 
+ 
+ //*********************Advanced User Info*******************************
+//These text boxes are meant for those who have an interest in expanding or using more complicated functions in their ghost. Also for my own reference in the future since I plan on using this template too, haha. If you have no interest in any of this and just want to keep things as simple as possible, feel free to skip these boxes.
+
+//--Mikiretalk, or the Off-Screen Boundary Check--
+
+//This has been a feature in the template for a very long time, and while it's enjoyable enough for some, for others it can be rather irritating or goes against what their ghost is. So to that end, I'm making this an opt-in feature. Basically, this flag checks to see if the ghost is off the screen and haves them say something to the user to get them to move them back on screen. If you want to enable this, it'll take a bit of fussing around. You're going to want to add the mikireflag check into OnAiTalk above. You can see how so below. Then you'll have to follow up on the flag check later down at OnSecondChange. Keep an eye out.
+
+ 
+//
+// OnAiTalk
+ // {
+	// if RAND(100) < communicateratio
+ 	// {
+ 		// StartCommunicate
+	// }
+ 	// else
+	// {
+ 		// if mikireflag == 0
+		// {
+			// if CHAIN.IDName == "" {
+ 				// lastTalk = RandomTalk
+			// }
+			// else {
+				// lastTalk = ChainTalk
+			// }
+			// lastTalk
+		// }
+ 		// else
+		// { 
+		// MikireTalk
+ 		// }
+	// }
+ // }
+//***********************************************************************
+
+
+//--RandomTalk 
+ //Alright, here we go! This is where ALL your ghost's random dialogue will go! These are the conversations that they'll have with you or each other that pop up depending on the talk rate defined in menu.dic (or if you ignored that, set in bootend.dic in the first boot, which would be every five minutes).
+ 
+ 
+//*********************Advanced User Info*******************************
+//These text boxes are meant for those who have an interest in expanding or using more complicated functions in their ghost. Also for my own reference in the future since I plan on using this template too, haha. If you have no interest in any of this and just want to keep things as simple as possible, feel free to skip these boxes.
+
+//You CAN link to other pools of dialogue in RandomTalk using envelopes/functions, such as %(teatalk) to pull from a pool of dialogue about tea. Then you'd just add that line in among the other dialogue in here with %(teatalk).
+
+//You can't do things like put OnSystemBoot or something in RandomTalk. You could use \![raise] to pull something though, although I'd be careful about it. More on these kind of things and conditionals in general in the coding page on the walkthrough.
+
+//If you split up RandomTalk with if/else checks, then you can redirect in an If to another function, like... if chargermode == "on" { ChargerChatting } else {normal random talk dialogue}. This would redirect the random dialogue to ChargerChatting instead. You can't just throw a function into RandomTalk directly though, like "dialogue 1" "dialogue 2" OnFunctionname "dialogue 3", that kind of thing. You'll have to split it off into its own if or point to it with an envelope.
+
+//You can do multiple ifs in RandomTalk if required... like an if for if a character is asleep, or if a third character is present, or if they're having a nervous breakdown, or if they're sulking. It depends! You can add a bunch of checks leading to specialized pools if you want. Just make sure you leave some normal dialogue in the last else for RandomTalk (unless you want to redirect that somewhere else with an envelope too... although that seems a bit redundant, honestly.)
+//***********************************************************************
+
+
+//nonoverlap_pool should make it so all your dialogue has an equal probability of being called, and it will do each line of dialogue before repeating them. "Why" is kind of technical and a bit outside the scope of this template, you can look into why elsewhere if you want.
+
+RandomTalk : nonoverlap_pool
+{
+	if sleeping == 1
+	{
+		if sitting > 0
+		{
+			"Zz...\e"
+			"Zzz..."
+			{
+			"\f[italic,true]\e"
+			--
+			"(He's barely moving.)"
+			"(He's a lot quieter like this... \w5you can barely even make out his breathing.)"
+			"(He mumbles something unintelligible.)"
+			"(He sighs in his sleep.)"
+			"(He murmurs something that might be a name.)"
+			"(It's strange to see him so still.)"
+			"(Just how tired WAS he...?)"
+			"(He seems at peace.)"
+			"(He's so quiet. \w5He might be in that stage of sleep where you don't even dream.)"
+			"(Is he dreaming? \w5He's very quiet.)"
+			"(You should probably take the glasses off... \w5but he might not appreciate that.)"
+			"(In hindsight, it's probably a good thing he didn't need to work today.)"
+			}
+			--
+			"\e"
+			if minsincewake >= 40
+			{
+			"(He's stirring... \w2he must be waking up.) \n\n[half]\w6\f[italic,false]Hhh... \w4hah—\![raise,OnWakingUp]\s[80]\i[0]\n\n[half]\f[italic,true](He leaps to his feet.)\n\n[half]\f[italic,false]Ah—!\w8\w8\w4\s[80]\cWas\i[ch] is \i[o]\![anim,clear,ch]los? \i[ch]\![anim,clear,o]\w5\s[22]\i[o]Wo bi\i[ch]\![anim,clear,o]n...\n\n[half]\w5\s[23]\i[a]I..\i[ch]\![anim,clear,a].\n\n[half]\w4.\w8.\w8.\w8\s[124]\i[o]oh.\i[base]\![anim,clear,o]\e"
+			}
+		}
+		else
+		{
+			"\s[96]Zzzz... \w8dummer Junge... \w8zzz...\e"
+			"\s[97]Zzzzz... \w8idiot... \w8bad rollout... \w8zzz...\e"
+			"\s[96]Zzz... \w8God bless... \w8America...? \w8Zzz...\e"
+			"\s[97]Zzzz... \w8hhh... \w8beer... \w8so much beer... \w8zzz...\e"
+			{
+				"\s[96]Zzz... \w8"
+				--
+				"queen"
+				"knight"
+				"rook"
+				"pawn"
+				"bishop"
+				--
+				" takes "
+				--
+				"queen"
+				"knight"
+				"rook"
+				"pawn"
+				"bishop"
+				--
+				"... \w8zzz...\e"
+			}
+			{
+				"\s[96]Zzz... \w8castle "
+				--
+				"kingside"
+				"queenside"
+				--
+				"... \w8zzz..."
+			}
+			"\s[96]Zzz... \w8mm... \w8sandwich... \w8zzzz..."
+			"\s[97]Zz... \w8Misha, stop... \w8stop it, don't... \w8zzz..."
+			"\s[96]Zzz... \w8more gun... yes, \w6more... \w8zzzz..."
+			"\s[96]Zzz... \w8well... \w8now we know... \w8zzz..."
+			"\s[97]Zzzz... \w8excessive urine... \w8zzz... \w8Dummkopf... \w8zzzz..."
+			"\s[97]Zzz... \w8hrrk... \w8no smoking... \w8how many times... \w8zzzz..."
+			"\s[96]Zzzz... \w8groundbreaking... \w8zz... \w8total atlanto-occipital... \w8zzz..."
+			"\s[96]Zzz... \w8coo... \w8coo-coo... \w8zzz..."
+			"\s[97]Zzz... \w8zz... \w8Archimedes... \w8stop that... \w8zzz..."
+			"\s[96]Zzz... \w8shh, \w4sh, \w4ganz ruhig... \w8ich bin hier... \w8zzzz..."
+			"\s[97]Zzzzz... \w8no... \w8not bread again... \w8zzz..."
+			"\s[96]Zzzz... \w8fully charged... \w8zzz...\e"
+			"\s[96]Zz... \w8incoming... \w8zzz...\e"
+			"\s[96]Zzz... \w8that was not medicine... \w8zzzz...\e"
+			"\s[97]Zzzzz... \w8zzrrk... \w8Dummkopfen...\e"
+			"\s[97]Zzz... \w8zzhk... \w8reckless... \w8why would you... \w8zz...\e"
+			"\s[96]Zzz... \w8won't feel a thing... \w8zzzz...\e"
+			"\s[96]Zzz... \w8minimal damage... \w8zz... \w8zz...\e"
+			"\s[96]Zzzz... \w8no choice... \w8invasive procedure... \w8zzz...\e"
+			"\s[96]Zzz... \w8patient was... \w8on arrival... \w8zzzzz...\e"
+			"\s[96]Zz... \w8nominal weight... \w8underheight... \w8zzz...\e"
+			"\s[97]Zzz... \w8can explain... \w8zz... \w8found him like that... \w8zzzz...\e"
+			"\s[97]Zzzz... \w8patient shows signs... \w8zz... \w8severe stupidity... \w8zzz...\e"
+			"\s[96]Zzz... \w8zzz... \w8celestial discharge... \w8zzz...\e"
+			"\s[97]Zzzz... \w8feculent emesis... \w8zzz... \w8zz...\e"
+			"\s[96]Zzz... \w8metabolize to freedom... \w8zzz... \w8zzz...\e"
+			"\s[96]Zz... \w8pleasantly demented... \w8zzzz...\e"
+			"\s[97]Zzz... \w8poor protoplasm... \w8zzzz...\e"
+			"\s[97]Zz... \w8zz... \w8sleep it off, \w4you're fine... \w8zzz...\e"
+			"\s[96]Zzz... \w8ice the patient... \w8start on Tylenol... \w8zzz... \w8zz...\e"
+			"\s[96]Zzzz... \w8scalpel... \w8zz... \w8forceps... \w8zzz... \w8ketchup... \w8zzzzz...\e"
+			if minsincewake >= 120
+			{
+				"\s[97]Zzhk... \w8n-no, \w4that's... \w8that shouldn't be... \w8everyone, I—\w2no, no, please, don't—\w3\![raise,OnWakingUp]\s[80]\i[0]STOP—!\n\n[half]\w8\w8\w8\w8\w8\s[122]\i[a]A-ah, \w4\i[ch]\![anim,clear,a]did \s[22]\i[au]I jus\i[ch]\![anim,clear,au]t...? \w4\s[23]\i[au]How long \i[ch]\![anim,clear,au]was \i[au]\![anim,clear,ch]I asle\i[a]\![anim,clear,au]ep for\i[ch]\![anim,clear,a]?\n\n[half]\w8\w8\w8\s[234]\i[base]\i[armcross]\f[italic,true](He scrambles to compose himself.)\n\n[half]\w4\f[italic,false].\w4.\w4.\w4\s[230]\i[a]my apologi\s[133]\i[ch]es.\e"
+			}
+		}
+	}
+	else
+	{
+		//\n\n[half]
+		
+		"\0\s[160]\i[base]\f[italic,true](He looks a little bored.)\e"
+		
+		"\0\f[italic,true](His \s[3]stomach growls.\w5 He looks puzzled.)\n\n[half]\f[italic,false]Hm?\w8\w8 \s[60]\i[a]\![anim,clear,base]It ca\i[base]\![anim,clear,a]n't \i[a]\![anim,clear,base]have\i[ch]\![anim,clear,a] be\i[au]\![anim,clear,ch]en th\i[ch]\![anim,clear,au]at l\i[a]\![anim,clear,ch]ong \i[base]\![anim,clear,a]sinc\i[a]\![anim,clear,base]e my\i[ch]\![anim,clear,a] last meal...\e"
+		
+		"\0\s[90]\f[italic,true](He looks hungry... must not have been able to eat before you called him.)\e"
+		
+		"\0\s[60]\i[base]\f[italic,true](He's looking around your computer in fascination.)\w5\n\n[half]\f[italic,false]\i[o]\![anim,clear,base]How \i[ch]\![anim,clear,o]inte\i[a]\![anim,clear,ch]rest\i[ch]\![anim,clear,a]ing...\e"
+		
+		"\0\s[62]\i[o]You w\i[ch]\![anim,clear,o]ouldn't \i[a]\![anim,clear,ch]happen \i[ch]\![anim,clear,a]to have t\i[o]\![anim,clear,ch]rapped\i[a]\![anim,clear,o] anyone els\i[ch]\![anim,clear,a]e inside t\i[o]\![anim,clear,a]his comp\i[au]\![anim,clear,o]uter, \i[ch]\![anim,clear,au]\w2would you? \w5\s[161]\i[au]\i[armside]Just c\i[o]\![anim,clear,au]urious.\i[ch]\![anim,clear,o]\e"
+		
+		"\0\s[230]\i[base]\i[armcross]\f[italic,true](He shifts in place. \w2The silence seems to bother him a little.)\e"
+		
+		"\0\s[290]\f[italic,true](He's humming a little tune to himself...)\e"
+		
+		"\0\s[31]\i[base]\i[armcross]\i[pout]\f[italic,true](He mumbles something under his breath in German.)\e"
+		
+		"\0\s[62]\i[base]\f[italic,true](He gives you a strange look. \w5When he notices you looking back, he \s[160]\i[base]quickly glances away.)\e"
+		
+		"\0\s[90]\f[italic,true](He seems lost in thought.)\e"
+		
+		"\0\s[160]\i[base]\f[italic,true](He's daydreaming...)\e"
+		
+		"\0\s[132]\i[armcross]\i[pout]\f[italic,true](He discreetly tries to check his watch, \w3then \s[131]\i[base]remembers he doesn't wear one. \w4He looks annoyed with himself.)\e"
+		
+		"\0\s[board]\i[base]\e"
+		
+		"\0\s[60]\i[au]I'll ad\i[a]\![anim,clear,au]mit, \w2\i[ch]\![anim,clear,a]I'm not\i[au]\![anim,clear,ch] terr\i[a]\![anim,clear,au]ibly us\i[o]\![anim,clear,a]ed to\i[base]\![anim,clear,o] bein\i[ch]\![anim,clear,base]g on \i[au]\![anim,clear,ch]this \i[ch]\![anim,clear,au]side \i[a]\![anim,clear,ch]of th\i[o]\![anim,clear,a]e gla\i[a]\![anim,clear,o]ss..\i[ch]\![anim,clear,a]. \w4\s[132]\i[a]\i[armcross]I sho\i[ch]\![anim,clear,a]uld \i[o]\![anim,clear,ch]hope you\i[ch]\![anim,clear,o]'re a\i[a]\![anim,clear,ch]t least \i[ch]\![anim,clear,a]getting\i[o]\![anim,clear,ch] good\i[a]\![anim,clear,o] data \i[au]\![anim,clear,a]out of\i[ch]\![anim,clear,au] me.\e"
+		
+		"\0\s[33]\i[ch]\i[armcross]I do \i[o]\![anim,clear,ch]wish yo\i[ch]\![anim,clear,o]u'd at \i[a]\![anim,clear,ch]least\i[ch]\![anim,clear,a] tell \i[a]\![anim,clear,ch]me wh\i[ch]\![anim,clear,a]at yo\i[a]\![anim,clear,ch]u hav\i[o]\![anim,clear,a]e pla\i[a]\![anim,clear,o]nned.\i[ch]\![anim,clear,a] \w6\s[100]\i[o]Or di\i[ch]\![anim,clear,o]d you\i[o]\![anim,clear,ch] just\i[ch]\![anim,clear,o] want\i[a]\![anim,clear,o] some\i[ch]\![anim,clear,a]one t\i[a]\![anim,clear,ch]o kee\i[o]\![anim,clear,a]p you co\i[ch]\![anim,clear,o]mpany?\e"
+		
+		"\0\s[160]\i[ch]Did \i[a]\![anim,clear,ch]I rememb\i[ch]\![anim,clear,a]er to\i[o]\![anim,clear,ch] fini\i[ch]\![anim,clear,o]sh tha\i[a]\![anim,clear,ch]t paperw\i[o]\![anim,clear,a]ork bef\i[ch]\![anim,clear,o]ore I...? \n\n[half]\w2\s[230]\i[a]\i[armcross]Bah, \w3\s[131]\i[ch]\i[armcross]it wa\i[au]\![anim,clear,ch]sn't th\i[ch]\![anim,clear,au]at im\i[o]\![anim,clear,ch]porta\i[ch]\![anim,clear,o]nt an\i[a]\![anim,clear,ch]yway.\i[ch]\![anim,clear,a]\e"
+		
+		{
+		"\0\s[board]\f[italic,true]"
+		--
+		"(Is he taking notes on your behavior...?)"
+		"(Looks like he's trying to get some work done...)"
+		--
+		"\n\n[half]\w6"
+		--
+		"\0\s[boardlooky]\f[italic,true](Maybe you can sneak a look.)\e"
+		"\0\s[boardlooky]\f[italic,true](Maybe you can take a peek?)\e"
+		}
+		
+		if trusted == 1
+		{
+			"\0\s[190]\i[base]\f[italic,true](He lets out a little sigh. \w5He doesn't seem as tense as he was before.)\e"
+		}
+		if passhour == 1
+		{
+			"\0\s[60]\i[a]It's \i[ch]\![anim,clear,a]been \i[a]\![anim,clear,ch]an ho\i[au]\![anim,clear,a]ur no\i[o]\![anim,clear,au]w, I \i[a]\![anim,clear,o]think\i[ch]\![anim,clear,a]... \w5\s[100]\i[au]are y\i[o]\![anim,clear,au]ou ce\i[a]\![anim,clear,o]rtain\i[ch]\![anim,clear,a] you'\i[a]\![anim,clear,ch]re not bored y\i[ch]\![anim,clear,a]et?\e"
+		}
+		if passhour < 2
+		{
+			"\0\s[62]\i[o]You w\i[au]\![anim,clear,o]on't\i[ch]\![anim,clear,au] be k\i[a]\![anim,clear,ch]eepin\i[ch]\![anim,clear,a]g me \i[au]\![anim,clear,ch]long\i[ch]\![anim,clear,au], wil\i[o]\![anim,clear,ch]l yo\i[ch]\![anim,clear,o]u? \w5\s[160]\i[a]I ha\i[ch]\![anim,clear,a]d pr\i[au]\![anim,clear,ch]oject\i[ch]\![anim,clear,au]s I \i[a]\![anim,clear,ch]was \i[ch]\![anim,clear,a]hopi\i[o]\![anim,clear,ch]ng to\i[ch]\![anim,clear,o] work\i[o]\![anim,clear,ch] on t\i[au]\![anim,clear,o]onigh\i[ch]\![anim,clear,au]t...\e"
+		}
+		
+		if timeslot == "morning"
+		{
+			{
+				"\0\s[60]\i[base]Hm. \w5\i[au]\![anim,clear,base]I bel\i[ch]\![anim,clear,au]ieve "
+				--
+				"\i[au]\![anim,clear,ch]Soldi\i[o]\![anim,clear,au]er"
+				"\i[a]\![anim,clear,ch]Pyro\i[o]\![anim,clear,a]"
+				--
+				" wa\i[a]\![anim,clear,o]s in \i[ch]\![anim,clear,a]charg\i[au]\![anim,clear,ch]e of \i[ch]\![anim,clear,au]break\i[a]\![anim,clear,ch]fast toda\i[ch]\![anim,clear,a]y... \w5\s[33]\i[o]\i[armcross]for \i[au]\![anim,clear,o]once,\i[hapich]\![anim,clear,au] I'm\s[232]\i[armcross]\i[hapia]\![anim,clear,hapich] glad to \i[hapich]\![anim,clear,hapia]be st\i[hapia]\![anim,clear,hapich]uck h\i[hapich]\![anim,clear,hapia]ere!\e"
+			}
+			{
+				"\0\s[60]\i[base]Hm. \w5\i[au]\![anim,clear,base]I bel\i[ch]\![anim,clear,au]ieve "
+				--
+				"\i[a]\![anim,clear,ch]Demom\i[ch]\![anim,clear,a]an"
+				"\i[a]\![anim,clear,ch]Engi\i[ch]\![anim,clear,a]neer\i[a]\![anim,clear,ch]"
+				"\i[a]\![anim,clear,ch]Spy\i[ch]\![anim,clear,a]"
+				"\i[a]\![anim,clear,ch]Heav\i[ch]\![anim,clear,a]y"
+				"\i[au]\![anim,clear,ch]Scout\i[ch]\![anim,clear,au]"
+				--
+				" wa\i[a]\![anim,clear,ch]s in \i[ch]\![anim,clear,a]charg\i[au]\![anim,clear,ch]e of \i[ch]\![anim,clear,au]break\i[a]\![anim,clear,ch]fast toda\i[ch]\![anim,clear,a]y... \w5\s[133]\i[au]\i[armcross]a sh\i[a]\![anim,clear,au]ame.\i[base]\![anim,clear,a]\e"
+			}
+			"\0\s[60]\i[base]Hm. \w5\i[au]\![anim,clear,base]I bel\i[ch]\![anim,clear,au]ieve \i[a]\![anim,clear,ch]I was in \i[ch]\![anim,clear,a]charg\i[au]\![anim,clear,ch]e of \i[ch]\![anim,clear,au]break\i[a]\![anim,clear,ch]fast toda\i[ch]\![anim,clear,a]y... \w5\s[251]\i[a]ach,\i[ch]\![anim,clear,a] the\i[a]\![anim,clear,ch]y will\i[ch]\![anim,clear,a] make\i[o]\![anim,clear,ch] do.\i[ch]\![anim,clear,o]\e"
+		}
+		
+		if timeslot == "earlymorning" || timeslot == "morning"
+		{
+			"\0\s[62]\i[a]I won\i[au]\![anim,clear,a]der i\i[ch]\![anim,clear,au]f the\i[a]\![anim,clear,ch] sun \i[ch]\![anim,clear,a]is up\i[a]\![anim,clear,ch] for \i[ch]\![anim,clear,a]you \i[o]\![anim,clear,ch]now?\i[base]\![anim,clear,o] \w5\s[160]\i[au]Not lik\i[a]\![anim,clear,au]e I'\i[base]\![anim,clear,a]m abl\i[a]\![anim,clear,base]e to te\i[ch]\![anim,clear,a]ll fr\i[a]\![anim,clear,ch]om in here.\i[ch]\![anim,clear,a]\e"
+		}
+		
+		//if it's a weekday
+		if (weekday >= 1 && weekday <= 5)
+		{
+			if timeslot == "lunch" || timeslot == "afternoon"
+			{
+				"\0\s[230]\i[base]\i[armcross]\f[italic,true](He looks restless. Probably thinking about today's battle.)\e"
+				
+				"\0\s[60]\i[o]Toda\i[a]\![anim,clear,o]y's matc\i[ch]\![anim,clear,a]h shou\i[o]\![anim,clear,ch]ld be\i[ch]\![anim,clear,o] ong\i[au]\![anim,clear,ch]oing now. \i[ch]\![anim,clear,au]\w5\s[162]\i[ch]For \i[o]\![anim,clear,ch]your \i[a]\![anim,clear,o]informati\i[ch]\![anim,clear,a]on, \i[o]\![anim,clear,ch]tho\i[ch]\![anim,clear,o]se po\i[o]\![anim,clear,ch]or foo\i[a]\![anim,clear,o]ls are a\i[ch]\![anim,clear,a]t a \i[a]\![anim,clear,ch]terr\i[ch]\![anim,clear,a]ible \i[a]\![anim,clear,ch]disadvanta\i[ch]\![anim,clear,a]ge wi\i[a]\![anim,clear,ch]thout me.\i[ch]\![anim,clear,a]\e"
+				
+				"\0\s[230]\i[base]\i[armcross]\f[italic,true](He makes an impatient noise.)\n\n[half]\w5\f[italic,false]Mmh... \w5\s[120]\i[a]I co\i[o]\![anim,clear,a]uld b\i[ch]\![anim,clear,o]e fig\i[au]\![anim,clear,ch]hting\i[ch]\![anim,clear,au] on t\i[au]\![anim,clear,ch]he fi\i[a]\![anim,clear,au]eld right ab\i[ch]\![anim,clear,a]out n\i[au]\![anim,clear,ch]ow..\i[ch]\![anim,clear,au].\e"
+				
+				"\0\s[162]\i[au]A han\i[a]\![anim,clear,au]dful \i[ch]\![anim,clear,a]of gr\i[o]\![anim,clear,ch]own m\i[a]\![anim,clear,o]en are l\i[ch]\![anim,clear,a]ikely\i[a]\![anim,clear,ch] dying ter\i[ch]\![anim,clear,a]ribly\i[a]\![anim,clear,ch] on t\i[ch]\![anim,clear,a]he ba\i[a]\![anim,clear,ch]ttlefield ri\i[ch]\![anim,clear,a]ght n\i[a]\![anim,clear,ch]ow thanks \i[ch]\![anim,clear,a]to yo\i[a]\![anim,clear,ch]u, fo\i[o]\![anim,clear,a]r the\i[au]\![anim,clear,o] reco\i[ch]\![anim,clear,au]rd. \w5\s[260]\i[ch]Just \i[a]\![anim,clear,ch]letting\i[o]\![anim,clear,a] you\i[au]\![anim,clear,o] kno\i[ch]\![anim,clear,au]w.\e"
+				
+				"\0\s[260]\i[ch]We're\i[a]\![anim,clear,ch] stat\i[ch]\![anim,clear,a]ioned\i[o]\![anim,clear,ch] on \i[a]\![anim,clear,o]%(gamemaps) tod\i[ch]\![anim,clear,a]ay, i\i[a]\![anim,clear,ch]f I reca\i[au]\![anim,clear,a]ll cor\i[a]\![anim,clear,au]rectly\i[ch]\![anim,clear,a]... \w2\s[60]\i[a]I won\i[au]\![anim,clear,a]der h\i[o]\![anim,clear,au]ow t\i[au]\![anim,clear,o]hat's\i[ch]\![anim,clear,au] goi\i[o]\![anim,clear,ch]ng.\i[ch]\![anim,clear,o]\e"
+			} 
+			elseif timeslot == "evening"
+			{
+				"\0\s[60]\i[o]Toda\i[a]\![anim,clear,o]y's matc\i[ch]\![anim,clear,a]h shou\i[o]\![anim,clear,ch]ld be\i[ch]\![anim,clear,o] over\i[o]\![anim,clear,ch] by n\i[a]\![anim,clear,o]ow..\i[ch]\![anim,clear,a]. \w5\s[133]\i[a]\i[armcross]I can\i[ch]\![anim,clear,a] imag\i[a]\![anim,clear,ch]ine h\i[ch]\![anim,clear,a]ow th\i[au]\![anim,clear,ch]ey f\i[a]\![anim,clear,au]ared without \i[ch]\![anim,clear,a]me.\e"
+			}
+			elseif timeslot == "latenight" || timeslot == "midnight"
+			{
+				"\0\s[60]\i[a]Is it\i[ch]\![anim,clear,a] late\i[a]\![anim,clear,ch] in t\i[ch]\![anim,clear,a]he ev\i[a]\![anim,clear,ch]ening\i[o]\![anim,clear,a] now\i[ch]\![anim,clear,o]? \w5\s[61]\i[ch]It fe\i[a]\![anim,clear,ch]els like it\i[ch]\![anim,clear,a]'s late. \w5\s[62]\i[o]Sure\i[ch]\![anim,clear,o]ly yo\i[o]\![anim,clear,ch]u hav\i[base]\![anim,clear,o]e pl\i[a]\![anim,clear,base]ans \i[ch]\![anim,clear,a]to ge\i[a]\![anim,clear,ch]t so\i[ch]\![anim,clear,a]me s\i[a]\![anim,clear,ch]lee\i[base]\![anim,clear,a]p.\e"
+				
+				"\0\s[0]\i[ch]You k\i[o]\![anim,clear,ch]now, it\i[armup]'\i[a]\![anim,clear,o]s a s\i[ch]\![anim,clear,a]tudie\i[au]\![anim,clear,ch]d fa\i[ch]\![anim,clear,au]ct th\i[a]\![anim,clear,ch]at the hu\i[ch]\![anim,clear,a]man b\i[o]\![anim,clear,ch]ody b\i[ch]\![anim,clear,o]enefi\i[au]\![anim,clear,ch]ts mo\i[ch]\![anim,clear,au]re fr\i[a]\![anim,clear,ch]om consist\i[o]\![anim,clear,a]ent s\i[base]\![anim,clear,o]leep-\i[a]\![anim,clear,base]wake hou\i[ch]\![anim,clear,a]rs tha\i[a]\![anim,clear,ch]n suf\i[ch]\![anim,clear,a]ficie\i[a]\![anim,clear,ch]nt ho\i[ch]\![anim,clear,a]urs s\i[a]\![anim,clear,ch]pent sleeping. \i[base]\![anim,clear,a]\w5\s[32]\i[a]If yo\i[o]\![anim,clear,a]u're \i[au]\![anim,clear,o]going\i[ch]\![anim,clear,au] to s\i[a]\![anim,clear,ch]tay \i[base]\![anim,clear,a]up th\i[a]\![anim,clear,base]is late oft\i[ch]\![anim,clear,a]en, \s[132]\i[o]\i[armcross]you \i[ch]\![anim,clear,o]shoul\i[a]\![anim,clear,ch]d at \i[ch]\![anim,clear,a]least\i[a]\![anim,clear,ch] be keepin\i[ch]\![anim,clear,a]g to \i[a]\![anim,clear,ch]the s\i[au]\![anim,clear,a]ame h\i[ch]\![anim,clear,au]ours \i[a]\![anim,clear,ch]every\i[ch]\![anim,clear,a] night.\e"
+				
+				"\0\s[162]\i[ch]\i[armside]You k\i[o]\![anim,clear,ch]now, \s[262]\i[ch]\![anim,clear,o]a you\i[au]\![anim,clear,ch]ng la\i[a]\![anim,clear,au]dy l\i[ch]\![anim,clear,a]ike \i[a]\![anim,clear,ch]your\i[o]\![anim,clear,a]self \i[ch]\![anim,clear,o]reall\i[a]\![anim,clear,ch]y ought\i[au]\![anim,clear,a] to b\i[ch]\![anim,clear,au]e get\i[a]\![anim,clear,ch]ting s\i[base]\![anim,clear,a]ome r\i[a]\![anim,clear,base]est a\i[ch]\![anim,clear,a]t thi\i[a]\![anim,clear,ch]s time of ni\i[ch]\![anim,clear,a]ght.\n\n[half]\w6\s[62]\i[base]\w8\w1...\s[0]\i[a]why\i[ch]\![anim,clear,a] are\i[o]\![anim,clear,ch] you\i[a]\![anim,clear,o] givi\i[ch]\![anim,clear,a]ng me\i[a]\![anim,clear,ch] that\i[o]\![anim,clear,a] loo\i[ch]\![anim,clear,o]k?\e"
+			}
+		}
+		
+		if minsincesleep == 0 || minsincesleep > 30
+		{
+			"\0\s[90]\e:chain=sleebtime"
+		}
+		if passmin > 30 || passhour > 0 || petcount > 0 || petfail > 0
+		{
+			"\0\s[32]\i[base]\i[armcross]\f[italic,true](He gives you an odd, wary look. \w5You ask him what he's thinking about.)\n\n[half]\w5\f[italic,false]\s[133]\i[a]\i[armcross]I'm \i[ch]\![anim,clear,a]just... \w3\s[230]\i[au]confuse\i[ch]\![anim,clear,au]d, i\i[a]\![anim,clear,ch]s all.\i[ch]\![anim,clear,a] \w5\s[43]\i[ch]I'd e\i[a]\![anim,clear,ch]xpected \i[o]\![anim,clear,a]you t\i[ch]\![anim,clear,o]o ha\i[a]\![anim,clear,ch]ve introdu\i[ch]\![anim,clear,a]ced a\i[o]\![anim,clear,ch]t lea\i[ch]\![anim,clear,o]st so\i[a]\![anim,clear,ch]me ki\i[au]\![anim,clear,a]nd of ex\i[ch]\![anim,clear,au]perime\i[a]\![anim,clear,ch]ntal factor \i[ch]\![anim,clear,a]into \i[a]\![anim,clear,ch]this \i[ch]\![anim,clear,a]by no\i[a]\![anim,clear,ch]w, but\i[base]\![anim,clear,a] all \i[a]\![anim,clear,base]you'\i[au]\![anim,clear,a]ve do\i[ch]\![anim,clear,au]ne s\i[a]\![anim,clear,ch]o far is\i[ch]\![anim,clear,a]... \w5\s[0]"
+			--
+			if askedmedonce == 1 || askedteamonce == 1
+			{
+				if petcount > 0
+				{
+					"\i[a]pet m\i[ch]\![anim,clear,a]e and\i[a]\![anim,clear,ch] "
+				}
+				--
+				"\i[au]\![anim,clear,a]try t\i[ch]\![anim,clear,au]o mak\i[a]\![anim,clear,ch]e friends with\i[ch]\![anim,clear,a] me?"
+			}
+			else
+			{
+				if petfail > 0
+				{
+					"\i[au]harass\i[ch]\![anim,clear,au] me a\i[a]\![anim,clear,ch]nd "
+				}
+				--
+				"hav\i[ch]\![anim,clear,a]e me \i[a]\![anim,clear,ch]aroun\i[ch]\![anim,clear,a]d?"
+			}
+			--
+			" \w5\s[62]\i[o]Surel\i[ch]\![anim,clear,o]y tha\i[a]\![anim,clear,ch]t can't b\i[ch]\![anim,clear,a]e all\i[au]\![anim,clear,ch] you'\i[o]\![anim,clear,au]ve br\i[au]\![anim,clear,o]ought\i[ch]\![anim,clear,au] me h\i[a]\![anim,clear,ch]ere for\i[ch]\![anim,clear,a].\e"
+		}
+		
+		
+	//Single lines of dialogue like this are simple and easy to do. 
+	
+	// "\0\s[0]This is dialogue referring to %(username).\w8\1\s[10]Hello, %(username).\e"
+	
+	//Here, the characters are using the %(username) envelope to use the user's name. More on envelopes in word.dic. You can use any envelope you want in dialogue, practically. Note that if your user hasn't set their username, they will be referred to as USER. You can also use %username (with no parentheses) to grab the user's name directly from SSP itself rather than have them tell your ghost specifically.
+	
+	// "\1\s[10]Here is dialogue using %(username)'s pronouns.\w8\0\s[0]%(heshe) went to the store and got %(himher)self some milk for %(hisher) cat.\e"
+	
+	//You can use the pronouns set up during their first boot (see bootend.dic) or in the config menu (menu.dic) in sentences like this as well. You can see that the envelope %(heshe) replaces where he or she would be in the sentence, and so on for the rest of them. This makes it so they use the correct pronoun in the right place. If you don't have pronouns enabled on your ghost, you don't need to worry about these envelopes and shouldn't use them.
+	
+	// "\1\s[10]Here we'll use the envelope 'exampleenvelope' to show what it looks like in a balloon.\w8\0\s[0]%(exampleenvelope).\e"
+	
+	// //As you can see, you can put any envelope from word.dic in here, as long as you properly format it as an envelope by putting a percent sign in front and putting it in parentheses. %(username), %(icecream), %(bunnies), whatever, this is up to you as long as you've defined it in word.dic. You can see how the values stored in the envelope appear in the balloon when the dialogue is called.
+	// //Do note that you cannot put quotation marks in your dialogue. If you're using Notepad++ which you should be doing, you'll see the line break and turn black if you do. Use apostrophes instead.
+	
+	// "\1\s[10]Here we'll use the envelope 'blanklist' to show what it looks like in a balloon.\w8\0\s[0]%(blanklist).\e"
+	
+	// "\1\s[10]Here we'll use the envelope 'blanklist2' to show what it looks like in a balloon.\w8\0\s[0]%(blanklist2).\e"
+	
+	// "\1\s[10]Here we'll use the envelope 'blanklist3' to show what it looks like in a balloon.\w8\0\s[0]%(blanklist3).\e"
+	
+	// //And here are more examples using the blanklists I set up in word.dic.
+	
+	// "\1\s[10]Here we'll use the envelope 'usersfolder' to pretend to look at the user's files.\w8\0\s[0]Hey, have you looked at %(usersfolder) lately?\w8\1\s[19]\n\n[half]No.\e"
+	
+	// //You can use the usersfolder envelope creatively if you like, haha.
+	
+	// "\1\s[10]Here we'll use the envelope 'internalenvelope' to show an envelop containing another envelope.\w8\0\s[0]%(internalenvelope).\e"
+	
+	// //Here's an example using the internal envelope I mentioned in word.dic. Basically, a function within a function. More on that kind of thing on the coding page of the walkthrough.
+	
+	// "\1\s[10]Here is dialogue referring to Anchor 1.\w8\0\s[0]Here is dialogue referring to Anchor 2 and Anchor 3.\e"
+	
+	//Anchor words are defined more in anchor.dic. Note here when you see this dialogue that Anchor 1, 2, and 3 become links when spoken, even if they weren't written as links in the dialogue in this file. This is why anchor words are convenient, you don't have to set up link code every time they say a certain word. Try clicking the links when they appear to see what they lead to. It'll give you an idea of exactly how anchors work.
+	
+
+	// if nowshell == "Hypothetical Shell that doesn't actually exist"
+	// {
+	// "\0\s[0]This is dialogue related to a shell we don't actually have.\w8\1\s[18]Unless it somehow pops into existence.\e"
+	
+	// "\0\s[0]This is more dialogue related to a hypothetical shell we don't actually have.\w8\1\s[19]It's not happening.\e"
+	// }
+	
+	//--Double Envelopes
+	//If you've gone through word.dic, you may remember a list with two sets of values on each line. This is how you would call something like that! Technically, what I call a double envelope is really an array, or a stored list of values. You can pull certain things out of that list as you need, although it requires some specific formatting. For this example, we'll use the double envelope that cindysuke made that has a Korean word and its definition. This can be a bit complicated, so pay close attention.
+	//If this scares you too much, you can delete the whole thing.
+	
+	//note that this is enclosed in its own set of brackets
+	// {
+	// _korean = lessonkor //Here, the envelope "lessonkor" (which is in word.dic) is stored as a new temporary value called _korean. You can name the new value anything you like. As a reminder, when coding, it goes "4 = 2 + 2" and not "2 + 2 = 4". The result always comes first!
+	// //If you look at lessonkor in word.dic, you'll see it goes "Korean word, meaning". So "Korean word" is the first value in that array, and "meaning" is the second. Arrays always start at 0, as a note.
+	// _korword = _korean[0] //Now we make a temporary value called "_korword", which is what will store the Korean word. Since the Korean word is the first value in the array _korean which we just defined, then we can pull that value from the array with _korean[0]. [0] is telling it which entry in the array to take - in this case, the first one (again, arrays start at 0).
+	// _kormean = _korean[1] //Now we make a temporary value called "_kormean", which is what will store the meaning of the Korean word. This is the second value in the array, so we can pull it out of _korean by using _korean[1].
+	
+	// //Now we put it all together!
+	// "\1\s[10]Here is an example of a double envelope. The Korean word is %(_korword).\w8\0\s[0]The word means %(_kormean).\e"
+	
+	// //As you can see here, we then use the values we set above for _korword and _kormean up there in the dialogue as our new envelopes. If you're planning on using a double envelope/array like this, study how this works very carefully! If you're good with arrays, you can do a lot with this kind of thing, but I must admit I am terrible with arrays and they're still hard for me to wrap my head around, so I don't have much advice on how to do that kind of thing.
+	// //The underscores in front of korword and kormean mean that the value is temporary, and will disappear when the dialogue has finished. More on this kind of thing on the coding page of the walkthrough.
+	
+	// //Additional Note - You can't test this kind of dialogue in Script Input. You'll have to wait until it comes up naturally in your ghost's random dialogue.
+	// }
+	//That's all for double envelopes! As mentioned, if this scares you, you can delete this chunk and you'll be fine.
+	
+	//You can use other fancier SakuraScript bits in your dialogue if you want to get font effects, although I won't get too much into them here. In this case, \f[height,20] changes the height of the font, in this case to 20 or to 6, and then \f[height,default] changes them back to normal. I touch more on this in the SakuraScript page of the walkthrough.
+	
+	// "\0\s[0]\f[strike,true]These words are struck out.\f[strike,default]\w8\1\s[10]\f[sub,true]These words are a subscript.\f[sub,false] \f[sup,true]These words are a superscript.\f[sup,false] \f[underline,true]These words are underlined.\f[underline,default] \f[bold,true]These words are bold.\f[bold,false] \f[italic,true]These words are italic.\f[italic,false] \f[color,186,146,112]These words are a color.\f[color,default] This tag would return to default.\f[default]\e"
+	
+	//Here's a list of similar tags you may find useful. You can see they function much like <b> or <i> tags in html. You just enclose the piece of text you want to change with them. Note that they start with \f[word,true] to turn it on, then \f[word,false] or \f[word,default] to turn it off. I assume you can tell what the tags do by the text they enclose.
+	//For the \f[color] tag, the three colors listed are the RGB values of the color you want to use for your text. Change them to whatever color you want to use. \f[default] can be an easy way to quickly go back to the default word setting in your balloon after messing with colors and effects a lot.
+	
+	// "\0\s[0]Here's a link to a website. \_a[http://www.website.com/]Right here.\_a\e"
+	
+	//Along the same lines as above, you can use \_a[address] to link to certain things. Note that it ends with \_a to close the link. It's very similar to <a href=address> and </a> in html.
+	
+	// "\0\s[3]\1\s[15]\_sWe are saying this dialogue at the same time.\e" 
+	
+	//This dialogue uses a unique tag, \_s. \_s makes it so both characters will speak the same words at the same time. Try it in Script Input to see how it works. I talk about it a little more on the walkthrough page for scripting.
+	
+	//And so we reach the end of randomtalk! I again reiterate, YOU CAN AND SHOULD WRITE YOUR OWN NEW LINES OF DIALOGUE FOR THIS! I included some random example phrases here for you just to replace the text and see what you can do, but there really aren't that many. You'll want to add more, and doing so is easy! Just copy and paste a line and redo the text. Repeat as many times as you want with as many conversations as you want. You can always expand this section!
+	}
+}
+
+//--Chains
+sleebtime
+{{CHAIN
+	"\![raise,OnFallingAsleep]\0\s[95]\f[italic,true](He seems deep in thought... what could he be thinking about?)\n\n[half]\f[italic,false]\w6.\w6.\w6. \w6.\w6.\w6. \w6.\w6.\w6.\s[96]zzz...\e:chain=end"
+}}
+
+OnFallingAsleep
+{
+	sleeping = 1
+	sitting = 0
+	
+	sleeptimer = 1
+	waketimer = 0
+	minsincesleep = 0
+	
+	CHAIN.IDName = ""
+	lastTalk = ""
+}
+
+OnWakingUp
+{
+	sleeping = 0
+	sitting = 0
+	
+	sleeptimer = 0
+	waketimer = 1
+	minsincewake = 0
+	
+	CHAIN.IDName = ""
+	lastTalk = ""
+}
+
+HourCheck
+{
+if passmin >= 59
+	{
+		passmin = 0
+		passhour = passhour + 1
+	}
+}
+
+OnMinuteChange
+{
+	HourCheck //checks to see if an hour has passed, ignore it
+	if sleeptimer == 1 
+	{
+		minsincewake = minsincewake + 1
+	}
+	elseif waketimer == 1
+	{
+		minsincesleep = minsincesleep + 1
+	}	
+	--
+ 	if minute == 0
+	{
+		{
+		"\f[italic, true](It's "
+		--
+ 		if hour == 12
+		{
+ 			"noon"
+		}
+ 		elseif hour == 0 
+		{
+ 			"midnight"
+		}
+		else
+		{
+			"%(hour12)'o clock"
+		}
+		--
+		".)\e"
+		}
+	}
+	elseif mikireflag == 1
+ 	{
+ 		MikireTalk
+	}
+ }
+
+OnSecondChange
+{
+	if passsec == 59
+ 		{
+	 	passsec = 0
+ 		passmin = passmin + 1
+		}
+ 	else
+ 		{
+	 	passsec = passsec + 1
+		}
+	
+	//---------------------------------------------- IDLING POSE CHANGES
+	//Written by Zichqec https://ukagaka.zichqec.com/
+	//This code can be used to easily make your ghost change poses randomly between dialogues. This works even if dialogues are turned off entirely.
+	//OnSurfaceRestore only happens once after each dialogue, so most ghosts will be static between their dialogues, and stand completely still if you turn dialogues off. This code seeks to alleviate that.
+	
+	//This works by calling OnSurfaceRestore, so you can simply add whatever random poses you want to OnSurfaceRestore. If that won't work for your setup, you could make a separate function with a pool of poses for it to call.
+	//By default, this has a chance to make the ghost run OnSurfaceRestore every 15 seconds, so long as 15 seconds have passed since the last dialogue (and the balloon is not currently open). You can adjust this timing, and adjust the chance to change poses, if you like. I made it not change every time because I think it feels more organic that way.
+	
+	//This gets the time since the last dialogue ended, in seconds. SHIORI3FW.TalkEndTime is a variable that comes with YAYA as SHIORI
+	// _since = GETSECCOUNT - SHIORI3FW.TalkEndTime
+	
+	// //status is an inbuilt YAYA variable that has information on if the balloon is open, etc.
+	// _balloonisopen = "balloon" _in_ status
+	
+	// if _since % 5 == 15 && !_balloonisopen
+	// {
+		// //If you want to adjust how likely it is to change poses, change the number in the RAND. Higher numbers mean a lower chance for the pose to change.
+		// if RAND(4) == 0
+		// {
+			// reference0 = SHIORI3FW.LastSurface[0]
+			// OnSurfaceRestore
+		// }
+	// }
+	//------------------------------------------------ disabling this for now cause damn it gets annoying in development
+			
+	if mikireflag == 0 && reference1 == 1
+	{
+		if sleeping == 1
+		{
+			"\0...?\e"
+		}
+		else
+		{
+		"\0\s[0]...?\e"
+		}
+		MikireTalk
+	}
+	if mikireflag == 1 && reference1 == 0
+	{
+		EndMikireTalk
+	}
+	mikireflag = reference1 
+	//reference1 is if the ghost is offscreen or not
+	
+	
+	//This dialogue is for when the two characters are overlapping each other. Uncomment this if you want to have dialogue for it!
+	
+	// if reference2 == 1
+	// {
+ 		// "\0\s[0]Me and Triangle are overlapping.\w8\1\s[19]That's strange since your resolution is %screenwidthx%screenheight, %(username). Shouldn't we have enough space?\4\e"
+		
+		// //You can see here the use of two envelopes, screenwidth and screenheight, to tell the user their resolution. Oddly, they are not in parentheses. I'm not sure why this is, but they don't display right otherwise. An odd quirk with these two envelopes.
+		// //Note also how Triangle moves away at the end of the dialogue. This is due to the \4 tag. That will make any one character move away from the other if they are able. I talked about this tag and its counterpart tag \5 in the SakuraScript page on the walkthrough.
+	// }
+ }
+
+ //---- MikireTalk ---------------------------------------------------------------------
+
+MikireTalk
+{
+	if sleeping == 1
+	{
+		if sitting == 0
+		{
+			"\s[96]"
+		}
+		--
+		"Zzz... \w8hrmm... \w8zzz...\e"
+	}
+	else
+	{
+		"\0\s[60]\i[au]Oh!\i[o] \![anim,clear,au]\w5\i[au]\![anim,clear,o]How st\i[ch]\![anim,clear,au]range. \w5\s[61]\i[base]Am I \i[a]\![anim,clear,base]off y\i[au]\![anim,clear,a]our s\i[o]\![anim,clear,au]creen\i[ch]\![anim,clear,o] righ\i[a]\![anim,clear,ch]t now\i[o]\![anim,clear,a]? \i[ch]\![anim,clear,o]\w5\s[62]\i[a]I get the\i[ch]\![anim,clear,a] stran\i[a]\![anim,clear,ch]gest \i[ch]\![anim,clear,a]feeli\i[a]\![anim,clear,ch]ng that I am.\i[base]\![anim,clear,a]..\n\n[half]\w5\f[italic,true](If you'd like, you can push \f[bold,true]CTRL-Shift-F12 \f[bold,false]to bring him back.)"
+	}
+ }
+
+EndMikireTalk
+{
+	 if sleeping == 1
+	{
+		if sitting == 0
+		{
+			"\s[97]"
+		}
+		--
+		"Mmf... \w8hnn...? \w8Zzz...\e"
+	}
+	else
+	{
+		"\0\s[1]\i[ch]What\i[a]\![anim,clear,ch] a cu\i[o]\![anim,clear,a]rious s\i[ch]\![anim,clear,o]ensat\i[a]\![anim,clear,ch]ion..\i[ch]\![anim,clear,a].\e"
+	}
+ }
+
+
+//**** OnSurfaceRestore *****************************************************************
+//*********************Advanced User Info*******************************
+//You can put if statements in OnSurfaceRestore to make exceptions for certain poses, or to make sure that once they're in a certain pose, they stay in that pose. For example, if you turn my Hunter and Smoker ghost into eggplants, there's a check for the their eggplant pose numbers to make sure they STAY eggplants when OnSurfaceRestore is called.
+//You can also use OnSurfaceRestore to clean up things that might be left on the screen, primarily from using p[number]\s[] to call up other objects or characters. Just make sure to add a p[number]\s[-1] to OnSurfaceRestore, and that should get rid of it each time the ghost cleans itself up.
+//***********************************************************************
+
+OnSurfaceRestore
+{
+	//if he is asleepb
+ 	if sleeping == 1
+	{
+		sleeping = 1
+		if sitting == 1
+		{
+			"\s[98]"
+		}
+		elseif sitting == 2
+		{
+			"\s[99]"
+		}
+		else
+		{
+			"\s[96]"
+		}
+ 	}
+	//if he has the clipboard out. probably a more efficient way to do this but whatever
+	else
+	{
+		if reference0 == 72
+		{
+			"\0\s[boardlooky]\e"
+		}
+		elseif (reference0 >= 70 && reference0 <= 72) || reference0 == 170 || reference0 == 171 || (reference0 >= 570 && reference0 <= 573) || (reference0 >= 670 && reference0 <= 673)
+		{
+			if RAND(10) >= 3
+			{
+				"\0\s[board]\e"
+				"\0\s[72]\e"
+			}
+			else
+			{
+				"\0\s[0]\e"
+				"\0\s[60]\i[base]\e"
+				"\0\s[61]\i[base]\e"
+				"\0\s[160]\i[base]\e"
+				"\0\s[161]\i[base]\e"
+				"\0\s[90]\e"
+			}
+		}
+		else
+		{
+			"\0\s[0]\e"
+			"\0\s[60]\i[base]\e"
+			"\0\s[61]\i[base]\e"
+			"\0\s[160]\i[base]\e"
+			"\0\s[161]\i[base]\e"
+			"\0\s[90]\e"
+			if RAND(10) >= 8
+			{
+				"\0\s[board]\e"
+			}
+		}
+	}
+}
+
+OnKeyPress
+{
+	if reference0 == "t"
+	{
+	OnAiTalk
+	}
+	elseif reference0 == "r"
+	{
+	OnLastTalk
+	}
+	elseif reference0 == "f1"
+	{
+	"\![open,readme]"
+	}
+}
+
+//thinking about his idiot friends!!
+Pool_thinkofdaboys : array
+{
+	{
+		"\s[260]\i[hapishut]\f[italic,true](He chuckles under his breath.)\n\n[half]\w6\f[italic,false]\s[160]\i[hapich]I won\i[o]\![anim,clear,hapich]der i\i[ch]\![anim,clear,o]f Sco\i[au]\![anim,clear,ch]ut has \i[hapich]\![anim,clear,au]broke\i[o]\![anim,clear,hapich]n a b\i[hapich]\![anim,clear,o]one y\i[o]\![anim,clear,hapich]et to\i[hapia]\![anim,clear,o]day.\i[hapich]\![anim,clear,hapia].. \w6"
+		--
+		case timeslot
+		{
+			when "midnight"
+			{
+				"\s[133]\i[ch]\i[armcross]it sh\i[o]\![anim,clear,ch]ouldn\i[hapich]\![anim,clear,o]'t be\i[au]\![anim,clear,hapich] long\i[o]\![anim,clear,au] befo\i[hapich]\![anim,clear,o]re he\i[hapia]\![anim,clear,hapich] wake\i[hapich]\![anim,clear,hapia]s up \i[hapia]\![anim,clear,hapich]and manages\i[hapich]\![anim,clear,hapia] one.\e"
+			}
+			when "morning", "lunch"
+			{
+				"\s[133]\i[hapich]\i[armcross]he's \i[o]\![anim,clear,hapich]usual\i[ch]\![anim,clear,o]ly ma\i[hapia]\![anim,clear,ch]naged at l\i[hapich]\![anim,clear,hapia]east \i[au]\![anim,clear,hapich]one by now.\i[ch]\![anim,clear,au]\e"
+			}
+			others
+			{
+				"\s[33]\i[hapich]\i[armcross]he's \i[o]\![anim,clear,hapich]usual\i[ch]\![anim,clear,o]ly ma\i[a]\![anim,clear,ch]naged abo\i[ch]\![anim,clear,a]ut tw\i[o]\![anim,clear,ch]o or t\i[a]\![anim,clear,o]hree by n\i[ch]\![anim,clear,a]ow.\e"
+			}
+		}
+	}
+	
+	"\0\s[230]\i[ch]Urgh, \w2\s[131]\i[au]\i[armcross]I'll \i[a]\![anim,clear,au]have to\i[ch]\![anim,clear,a] orde\i[o]\![anim,clear,ch]r that\i[a]\![anim,clear,o] new \i[o]\![anim,clear,a]liver\i[ch]\![anim,clear,o] for \i[a]\![anim,clear,ch]Demo whe\i[ch]\![anim,clear,a]n I g\i[a]\![anim,clear,ch]et ba\i[ch]\![anim,clear,a]ck...\e"
+	
+	"\s[60]\i[ch]Did S\i[a]\![anim,clear,ch]py need th\i[ch]\![anim,clear,a]at lu\i[au]\![anim,clear,ch]ng tra\i[a]\![anim,clear,au]nsplant \i[ch]\![anim,clear,a]perfo\i[a]\![anim,clear,ch]rmed tod\i[ch]\![anim,clear,a]ay...?\n\n[half]\w4\s[232]\i[o]\i[armcross]Oh, w\i[a]\![anim,clear,o]hatever\i[ch]\![anim,clear,a]. \w4\s[133]\i[a]\i[armcross]I'm sure he \i[ch]\![anim,clear,a]can h\i[a]\![anim,clear,ch]andle h\i[ch]\![anim,clear,a]imself.\e"
+	
+	"\s[260]\i[base]Hm. \w4\s[60]\i[ch]I do \i[o]\![anim,clear,ch]wonde\i[au]\![anim,clear,o]r if \i[o]\![anim,clear,au]they \i[ch]\![anim,clear,o]reali\i[a]\![anim,clear,ch]ze I'\i[ch]\![anim,clear,a]m gon\i[a]\![anim,clear,ch]e yet.\i[ch]\![anim,clear,a]..\e"
+	
+	"\s[142]\i[a]\i[armcross]Sniper\i[ch]\![anim,clear,a] prom\i[au]\![anim,clear,ch]ised \i[ch]\![anim,clear,au]to sha\i[a]\![anim,clear,ch]re his latest\i[ch]\![anim,clear,a] catc\i[a]\![anim,clear,ch]h wit\i[ch]\![anim,clear,a]h me \i[a]\![anim,clear,ch]today... \w5\s[240]\i[o]so m\i[a]\![anim,clear,o]uch f\i[ch]\![anim,clear,a]or th\i[a]\![anim,clear,ch]at, I supp\i[ch]\![anim,clear,a]ose.\e"
+	
+	"\s[200]\i[a]I was\i[o]\![anim,clear,a] supp\i[ch]\![anim,clear,o]osed to\i[a]\![anim,clear,ch] be he\s[100]lping\i[ch]\![anim,clear,a] Engi\i[a]\![anim,clear,ch]neer \i[ch]\![anim,clear,a]field\i[a]\![anim,clear,ch]-test new prot\i[ch]\![anim,clear,a]otype\i[a]\![anim,clear,ch]s today\i[ch]\![anim,clear,a]... \w6\s[251]\i[o]oh we\i[ch]\![anim,clear,o]ll.\e"
+	
+	{
+		"\s[60]\i[a]Ah... \w4I thi\i[ch]\![anim,clear,a]nk I'\i[a]\![anim,clear,ch]m abo\i[base]\![anim,clear,a]ut to\i[au]\![anim,clear,base] miss\i[o]\![anim,clear,au] a me\i[a]\![anim,clear,o]eting of\i[ch]\![anim,clear,a] the \i[a]\![anim,clear,ch]team book clu\i[base]\![anim,clear,a]b.\n\n[half]\w6"
+		--
+		if weekday < 1 || weekday > 5
+		{
+			"\s[133]\i[a]\i[armcross]We we\i[ch]\![anim,clear,a]re su\i[au]\![anim,clear,ch]ppose\i[ch]\![anim,clear,au]d to \i[a]\![anim,clear,ch]pick a new book thi\i[ch]\![anim,clear,a]s week... \w4\s[232]\i[a]\i[armcross]shame.\i[base]\![anim,clear,a]"
+		}
+		"\s[201]\i[o]Oh w\i[a]\![anim,clear,o]ell.\i[ch]\![anim,clear,a] \w5\i[a]\![anim,clear,ch]We were coveri\i[ch]\![anim,clear,a]ng a \i[o]\![anim,clear,ch]borin\i[ch]\![anim,clear,o]g rea\i[a]\![anim,clear,o]d anyway. \i[ch]\![anim,clear,a]"
+		"\s[162]\i[a]Shame\i[base]\![anim,clear,a]... \w3\i[au]\![anim,clear,base]I was\i[ch]\![anim,clear,au] actu\i[a]\![anim,clear,ch]ally \i[ch]\![anim,clear,a]quite\i[a]\![anim,clear,ch] interested\i[ch]\![anim,clear,a] in \i[a]\![anim,clear,ch]our latest \i[ch]\![anim,clear,a]pick.\i[ch]\![anim,clear,a]"
+		--
+		"\e"
+	}
+	if weekday < 1 || weekday > 5
+	{
+		"\s[1]\i[ch]It's \i[a]\![anim,clear,ch]days like thi\i[ch]\![anim,clear,a]s I u\i[o]\![anim,clear,ch]suall\i[ch]\![anim,clear,o]y pla\i[a]\![anim,clear,ch]y chess wit\i[ch]\![anim,clear,a]h Hea\i[a]\![anim,clear,ch]vy i\i[ch]\![anim,clear,a]n ou\i[a]\![anim,clear,ch]r off time. \i[ch]\![anim,clear,a]\w3\s[62]\i[ch]I DO \i[o]\![anim,clear,ch]beat \i[a]\![anim,clear,o]him, \i[ch]\![anim,clear,a]you k\i[o]\![anim,clear,ch]now.\i[base]\![anim,clear,o]\n\n[half]\w8...\s[61]\i[au]somet\i[ch]\![anim,clear,au]imes. \w6\s[160]\i[au]Often\i[ch]\![anim,clear,au]. \w7\s[260]\i[a]Very often\i[ch]\![anim,clear,a]. \w5\s[234]\i[o]\i[armcross]Don't\i[a]\![anim,clear,o] believ\i[ch]\![anim,clear,a]e wha\i[a]\![anim,clear,ch]t anyone \i[ch]\![anim,clear,a]else sa\i[a]\![anim,clear,ch]ys. \i[ch]\![anim,clear,a]\e"
+		
+		"\s[60]\i[ch]I wo\i[au]\![anim,clear,ch]nder i\i[o]\![anim,clear,au]f the\i[ch]\![anim,clear,o]y're \i[a]\![anim,clear,ch]still\i[ch]\![anim,clear,a] going\i[au]\![anim,clear,ch] throug\i[o]\![anim,clear,au]h with\i[ch]\![anim,clear,o] poke\i[au]\![anim,clear,ch]r tonigh\i[ch]\![anim,clear,au]t. \w5\s[160]\i[ch]\i[armside]Enginee\i[a]\![anim,clear,ch]r sti\i[ch]\![anim,clear,a]ll ha\i[a]\![anim,clear,ch]s to \i[o]\![anim,clear,a]fix t\i[a]\![anim,clear,o]he ta\i[ch]\![anim,clear,a]ble \i[a]\![anim,clear,ch]after\i[ch]\![anim,clear,a] last\i[a]\![anim,clear,ch] time..\i[ch]\![anim,clear,a].\e"
+		
+		"\s[60]\i[base]Hmm. \w6\i[a]\![anim,clear,base]I belie\i[ch]\![anim,clear,a]ve the\i[o]\![anim,clear,ch] week\i[ch]\![anim,clear,o]ly sche\i[a]\![anim,clear,ch]duled \i[o]\![anim,clear,a]team c\i[ch]\![anim,clear,o]heckups\i[a]\![anim,clear,ch] are \i[ch]\![anim,clear,a]due t\i[a]\![anim,clear,ch]oday..\i[ch]\![anim,clear,a]. \w6\s[201]\i[ch]eh, \w3\s[101]I'm \i[o]\![anim,clear,base]sure \i[a]\![anim,clear,o]they'\i[ch]\![anim,clear,a]ll b\i[a]\![anim,clear,ch]e fin\i[ch]\![anim,clear,a]e.\e"
+	}
+}

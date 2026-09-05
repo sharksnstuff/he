@@ -26,7 +26,7 @@ On_username
 
 On_homeurl
 {
-	"https://sharksnstuff.github.io/he/updates/meem/"
+	"https://raw.githubusercontent.com/sharksnstuff/he/refs/heads/main/updates/meem/"
 }
 
 
@@ -84,6 +84,7 @@ On_sakura.recommendsites
 	"Demoman Ghost"
 	--
 	"%ASC(1)https://tf2maps.net/downloads/the-demoman-ukagaka-desktop-buddy.10231//%ASC(2)"
+	--
 	
 	"UKADOC Project Wiki (J)"
 	--

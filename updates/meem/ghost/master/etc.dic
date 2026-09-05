@@ -373,25 +373,25 @@ OnUpdateComplete
  	else //if the ghost has updated successfully
 	{
 		"\s[201]\i[a]Done.\i[ch]\![anim,clear,a]"
-		--
-		"%(changelogask)\e"
+		// --
+		// "%(changelogask)\e"
  	}
 }
 
-changelogask
-{
-"\n\n\w6\f[italic,true](Do you want to see the changelog?)\n\n\![*]\q[Yes,OnWhatChanged]\n\![*]\q[No,STFU]\e"
-}
+// changelogask
+// {
+// "\n\n\w6\f[italic,true](Do you want to see the changelog?)\n\n\![*]\q[Yes,OnWhatChanged]\n\![*]\q[No,STFU]\e"
+// }
 
-OnWhatChanged
-{
-	"\![open,file,changelog.txt]\e"
-}
+// OnWhatChanged
+// {
+	// "\![open,file,changelog.txt]\e"
+// }
 
-STFU
-{
-	""
-}
+// STFU
+// {
+	// ""
+// }
 
  //---- OnUpdateFailure -------------------------------------------------------------
  //Error messages if the update process fails in some way.

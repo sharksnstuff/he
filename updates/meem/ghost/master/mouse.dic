@@ -374,3 +374,4 @@ MouseDoubleClickKero
  //*********************Advanced User Info*******************************
  //There are other mouse related functions you could set up much like the above, such as OnMouseDragStart, OnMouseDragEnd, OnMouseWheel, and others which correspond to various things you can do with your mouse. You can probably guess what those functions do just by their names - OnMouseWheel would be if someone spun their mouse wheel over a certain area, for example. If you're interested in these, I'd recommend doing some reading at the CROW-SSP Encyclopedia to get a better idea of them and settle down for some trial and error learning as you try to put them in.
  //***********************************************************************
+ 

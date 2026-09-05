@@ -48,12 +48,7 @@ MouseMoveSakura
  			stroke = 0 //resetting the stroke count
 			if reference4 == "Head" || reference4 == "Face"
  			{
-				if trusted == 0
-				{
-					petfail += 1
-					PetFailTalk
-				}
-				elseif sleeping == 1
+				if sleeping == 1
 				{
 					petcount += 1
 					if sitting != 0
@@ -76,6 +71,11 @@ MouseMoveSakura
 						"\0\s[96]\f[italic,true](You pet him very gently. \w5He makes a soft little sound.)\n\n[half]\w5\f[italic,false]...zzz...\e"
 						"\0\s[96]\f[italic,true](His breathing slows. \w5Maybe he likes it?)\n\n[half]\w8\f[italic,false]Zzz...\e"
 					}
+				}
+				elseif trusted == 0
+				{
+					petfail += 1
+					PetFailTalk
 				}
 				else
 				{

@@ -1,0 +1,5 @@
+September 5, 2026
+
+-Added a changelog file. My quest to LARP as a real small dev continues.
+-Fixed the dates in the version history on the website :)
+-Fixed a bug where petting Medic while he was asleep could instantly wake him up.

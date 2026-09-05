@@ -1,5 +1,5 @@
 // AYA request log
-// load time: 2026/09/04 10:21:40
+// load time: 2026/09/05 21:08:09
 
 // response (Execution time : 15[ms])
 SHIORI/3.0 204 No Content
@@ -13,6 +13,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: enable_debug
 Reference0: 1
 
@@ -29,6 +30,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: OnLanguageChange
 Reference0: English
 Reference1: 0
@@ -48,8 +50,9 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: OnInitialize
-Reference0: 
+Reference0: reload
 
 
 // response (Execution time : 0[ms])
@@ -64,6 +67,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: ownerghostname
 Reference0: Medic
 
@@ -80,6 +84,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: basewareversion
 Reference0: 2.8.85
 Reference1: SSP
@@ -98,6 +103,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: capability
 Reference0: request.status
 Reference1: request.securitylevel
@@ -128,11 +134,12 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: OnNotifyOSInfo
 Reference0: WindowsNT,10.0,Windows 11 25H2.9278 (Ver.25H2) Wow64@x64
 Reference1: Intel,2592,0.6.7.6,bfebfbff
 Reference2: 33418852,4194176
-Reference3: 153
+Reference3: 387
 
 
 // response (Execution time : 0[ms])
@@ -147,6 +154,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: OnNotifyInternationalInfo
 Reference0: -480
 Reference1: 0
@@ -166,6 +174,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: OnNotifyFontInfo
 Reference0: Arial
 Reference1: Bahnschrift
@@ -415,6 +424,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: OnNotifySelfInfo
 Reference0: Medic
 Reference1: Medic
@@ -437,6 +447,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: OnNotifyBalloonInfo
 Reference0: Demobubble
 Reference1: C:/Users/Admin/Downloads/SUPER secret project DO NOT LOOK!!!!!/ssp_2_6_83f/balloon/demobubble/
@@ -455,6 +466,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: OnNotifyShellInfo
 Reference0: master
 Reference1: C:/Users/Admin/Downloads/SUPER secret project DO NOT LOOK!!!!!/ssp_2_6_83f/ghost/meem/shell/master/
@@ -473,6 +485,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: useorigin1
 
 
@@ -488,6 +501,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: version
 
 
@@ -505,6 +519,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: name
 
 
@@ -522,6 +537,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: craftman
 
 
@@ -539,6 +555,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: craftmanw
 
 
@@ -556,6 +573,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: OnNotifyUserInfo
 Reference0: Admin
 Reference1: Admin
@@ -588,6 +606,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: configuredbiffname
 
 
@@ -603,6 +622,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: OnDisplayChangeEx
 Reference0: init
 Reference1: 0,0,1920,1080,32,1,bottom,1032
@@ -620,6 +640,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: OnDisplayChange
 Reference0: 32
 Reference1: 1920
@@ -638,6 +659,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: OnNetworkStatusChange
 Reference0: online
 Reference1: 192.168.1.3
@@ -659,6 +681,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: OnTabletMode
 Reference0: 0
 
@@ -675,6 +698,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: OnDarkTheme
 Reference0: 1
 Reference1: 1
@@ -692,9 +716,10 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: OnRecycleBinStatusUpdate
-Reference0: 0
-Reference1: 0
+Reference0: 4
+Reference1: 16833919
 Reference2: 0
 Reference3: 0
 Reference4: 1
@@ -713,6 +738,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: ghostpathlist
 Reference0: C:\Users\Admin\Downloads\SUPER secret project DO NOT LOOK!!!!!\ssp_2_6_83f\ghost\
 
@@ -729,6 +755,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: balloonpathlist
 Reference0: C:\Users\Admin\Downloads\SUPER secret project DO NOT LOOK!!!!!\ssp_2_6_83f\balloon\
 
@@ -745,6 +772,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: headlinepathlist
 Reference0: C:\Users\Admin\Downloads\SUPER secret project DO NOT LOOK!!!!!\ssp_2_6_83f\headline\
 
@@ -761,6 +789,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: pluginpathlist
 Reference0: C:\Users\Admin\Downloads\SUPER secret project DO NOT LOOK!!!!!\ssp_2_6_83f\plugin\
 
@@ -777,6 +806,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: calendarskinpathlist
 Reference0: C:\Users\Admin\Downloads\SUPER secret project DO NOT LOOK!!!!!\ssp_2_6_83f\calendar\skin\
 
@@ -793,6 +823,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: calendarpluginpathlist
 Reference0: C:\Users\Admin\Downloads\SUPER secret project DO NOT LOOK!!!!!\ssp_2_6_83f\calendar\plugin\
 
@@ -809,6 +840,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: OnSensorListUpdate
 
 
@@ -824,6 +856,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: OnSpeechSynthesisStatus
 Reference0: 0
 
@@ -840,6 +873,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: OnVoiceRecognitionStatus
 Reference0: 0
 
@@ -850,209 +884,13 @@ Charset: UTF-8
 
 
 // request
-GET SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: menu.background.bitmap.filename
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-GET SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: menu.foreground.bitmap.filename
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-GET SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: menu.background.color.r
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-GET SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: menu.background.color.g
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-GET SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: menu.background.color.b
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-GET SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: menu.foreground.color.r
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-GET SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: menu.foreground.color.g
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-GET SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: menu.foreground.color.b
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-GET SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: username
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 200 OK
-Sender: AYA
-Charset: UTF-8
-Value: USER
-
-
-// request
 NOTIFY SHIORI/3.0
 Charset: UTF-8
 SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
-ID: rateofusegraph
-Reference0: MedicMedicSpy375581185.242775install172203797.697842270415198.809807
-Reference1: Dr. W.D. GasterGasterBrothers793813.759718install000.000000120.047608
-Reference2: MedicMedicidklol11480.704122install11482.30215811481.142585
-Reference3: GT Ghost Template - YAYAGirlTriangle2110.161361vanish000.000000000.000000
-Reference4: DemomanDemomanNO470.102684install000.000000000.000000
-Reference5: Emily/Phase4.5EmilyTeddy820.029338install100.000000400.000000
-Reference6: MedicMedic100.000000install000.000000000.000000
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-NOTIFY SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: OnDisplayHandover
-Reference0: init
-Reference1: 0
-Reference2: 
-Reference3: 0,0,1920,1080,32,1,bottom,1032
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-NOTIFY SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: OnDisplayHandover
-Reference0: init
-Reference1: 1
-Reference2: 
-Reference3: 0,0,1920,1080,32,1,bottom,1032
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-NOTIFY SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
+Status: balloon(0=0)
 ID: installedsakuraname
 Reference0: Demoman
 Reference1: Gaster
@@ -1072,6 +910,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: installedkeroname
 Reference0: NO
 Reference1: Brothers
@@ -1091,6 +930,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: installedghostname
 Reference0: Demoman
 Reference1: Dr. W.D. Gaster
@@ -1110,6 +950,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: installedballoonname
 Reference0: Balloon for Emily/P4
 Reference1: Demobubble
@@ -1129,6 +970,24 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
+ID: installedshellname
+Reference0: master
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+SecurityLevel: local
+SecurityOrigin: null
+Sender: SSP
+SenderType: internal
+Status: balloon(0=0)
 ID: installedheadlinename
 Reference0: GAME Watch
 Reference1: Google ニュース 日本語版
@@ -1151,6 +1010,7 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: installedplugin
 Reference0: SwissArmyKnife8F8BCFB8-B27A-456f-9BA0-551484856DDC
 Reference1: 共有変数プラグインABED14AF-F34B-4ff2-95B7-30ED37D5802D
@@ -1162,160 +1022,13 @@ Charset: UTF-8
 
 
 // request
-GET SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: sakura.recommendsites
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 200 OK
-Sender: AYA
-Charset: UTF-8
-Value: Ghost Template Walkthroughhttp://www.ashido.com/ukagaka/Zarla's Twitterhttps://twitter.com/Zarla_S/Zarla's Tumblrhttp://zarla-s.tumblr.com/Zarla's Dreamwidthhttp://zarla.dreamwidth.org/SSPhttp://ssp.shillest.net/Crow + SSP Reference (J)http://crow.aqrs.jp/reference/all/index.htmlGhost Documentation (J)http://usada.sakura.vg/contents/specification.htmlDemoman GhostUKADOC Project Wiki (J)http://ssp.shillest.net/ukadoc/manual/index.html/https://ukagaka.zichqec.com/
-
-
-// request
-GET SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: sakura.portalsites
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 200 OK
-Sender: AYA
-Charset: UTF-8
-Value: Xahlia's Tumblrhttps://sniping-sharko.tumblr.com/YOUR Tumblrhttps://sugrbyte.tumblr.com/TF2 Steam pagehttps://store.steampowered.com/app/440/Team_Fortress_2/Idk. Meet the Medic?https://www.youtube.com/watch?v=36lSzUMBJnc/It's hard thinking of links to put here you knowhttps://www.youtube.com/watch?v=d1YBv2mWll0/
-
-
-// request
-GET SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: kero.recommendsites
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 200 OK
-Sender: AYA
-Charset: UTF-8
-Value: A Sitehttp://www.asite.com/Another Sitehttp://anothersite.org/
-
-
-// request
 NOTIFY SHIORI/3.0
 Charset: UTF-8
 SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
-ID: installedshellname
-Reference0: master
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-NOTIFY SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: uniqueid
-Reference0: ssp_fmo_header_000057b4_0080077c
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-NOTIFY SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: hwnd
-Reference0: 8390524788396
-Reference1: 5572548985036
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-NOTIFY SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: installedshellname
-Reference0: master
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-NOTIFY SHIORI/3.0
-ID: otherghostname
-SecurityLevel: local
-Charset: UTF-8
-Sender: SSP
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-NOTIFY SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: OnBatteryNotify
-Reference0: -1
-Reference1: -1
-Reference2: online
-Reference3: no_battery
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-NOTIFY SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
+Status: balloon(0=0)
 ID: OnNotifyDressupInfo
 
 
@@ -1331,7 +1044,9 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
-ID: OnScheduleTodayNotify
+Status: balloon(0=0)
+ID: uniqueid
+Reference0: ssp_fmo_header_000013d4_001c0940
 
 
 // response (Execution time : 0[ms])
@@ -1346,14 +1061,32 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
-Status: talking
+Status: balloon(0=0)
+ID: hwnd
+Reference0: 18373767866406
+Reference1: 36066722230710
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+SecurityLevel: local
+SecurityOrigin: null
+Sender: SSP
+SenderType: internal
+Status: balloon(0=0)
 ID: rateofusegraph
-Reference0: MedicMedicSpy375581185.242775install172203797.697842270415198.809807
-Reference1: Dr. W.D. GasterGasterBrothers793813.759718install000.000000120.047608
-Reference2: MedicMedicidklol12480.704122boot12482.30215812481.142585
-Reference3: GT Ghost Template - YAYAGirlTriangle2110.161361vanish000.000000000.000000
-Reference4: DemomanDemomanNO470.102684install000.000000000.000000
-Reference5: Emily/Phase4.5EmilyTeddy820.029338install100.000000400.000000
+Reference0: MedicMedicSpy375581181.775964install159171483.568991259383991.886070
+Reference1: Dr. W.D. GasterGasterBrothers793813.200113install000.000000120.047870
+Reference2: MedicMedicidklol473364.728399boot4733616.382253473368.042125
+Reference3: GT Ghost Template - YAYAGirlTriangle2110.154799vanish000.000000000.000000
+Reference4: DemomanDemomanNO470.098508install000.000000000.000000
+Reference5: Emily/Phase4.5EmilyTeddy1030.042218install310.048757610.023935
 Reference6: MedicMedic100.000000install000.000000000.000000
 
 
@@ -1369,8 +1102,28 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
+Status: balloon(0=0)
 ID: OnSurfaceChange
-Reference0: 0
+Reference0: 170
+Reference1: 10
+Reference2: 0,170,680,1080
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+SecurityLevel: local
+SecurityOrigin: null
+Sender: SSP
+SenderType: internal
+Status: balloon(0=0)
+ID: OnSurfaceChange
+Reference0: 170
 Reference1: 10
 Reference2: 1,10,195,237
 
@@ -1382,102 +1135,302 @@ Charset: UTF-8
 
 // request
 NOTIFY SHIORI/3.0
+ID: otherghostname
+SecurityLevel: local
+Charset: UTF-8
+Sender: SSP
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+SecurityLevel: local
+SecurityOrigin: null
+Sender: SSP
+SenderType: internal
+Status: balloon(0=0)
+ID: OnOSUpdateInfo
+Reference0: 2026,9,5,16,43,39
+Reference1: 2026,9,5,14,52,4
+Reference2: success000000002026,9,5,14,52,4Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.459.58.0) - Current Channel (Broad)
+Reference3: success000000002026,8,28,7,22,152026-08 Preview Update (KB5120998) (26200.9278)
+Reference4: success000000002026,8,28,6,36,152026-08 .NET Framework Preview Update (KB5122385)
+Reference5: success000000002026,8,26,11,51,589NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+Reference6: success000000002026,8,26,11,51,589NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+Reference7: success000000002026,8,25,9,50,349NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+Reference8: success000000002026,8,25,9,50,349NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+Reference9: success000000002026,8,24,10,51,559NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+Reference10: success000000002026,8,24,10,51,559NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+Reference11: success000000002026,8,22,21,49,519NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+Reference12: success000000002026,8,22,21,49,519NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+Reference13: success000000002026,8,22,11,50,499NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+Reference14: success000000002026,8,22,11,50,499NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+Reference15: success000000002026,8,20,14,58,389NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+Reference16: success000000002026,8,20,14,58,389NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+Reference17: success000000002026,8,18,20,15,289NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+Reference18: success000000002026,8,18,20,15,289NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+Reference19: success000000002026,8,16,10,29,539NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+Reference20: success000000002026,8,16,10,29,539NRZT3Q9R3DL-Microsoft.WindowsAppRuntime.2
+Reference21: success000000002026,8,16,0,49,55NVIDIA - Display - 27.21.14.5671
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+ID: otherghostname
+SecurityLevel: local
+Charset: UTF-8
+Sender: SSP
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+ID: otherghostname
+SecurityLevel: local
+Charset: UTF-8
+Sender: SSP
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+ID: otherghostname
+SecurityLevel: local
+Charset: UTF-8
+Sender: SSP
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+SecurityLevel: local
+SecurityOrigin: null
+Sender: SSP
+SenderType: internal
+Status: balloon(0=0)
+ID: installedshellname
+Reference0: master
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+ID: otherghostname
+SecurityLevel: local
+Charset: UTF-8
+Sender: SSP
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+SecurityLevel: local
+SecurityOrigin: null
+Sender: SSP
+SenderType: internal
+Status: balloon(0=0)
+ID: OnUpdateComplete
+Reference0: changed
+Reference1: mouse.dic
+Reference3: ghost
+Reference4: manual
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: \s[201]\i[a]Done.\i[ch]\![anim,clear,a]
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+SecurityLevel: local
+SecurityOrigin: null
+Sender: SSP
+SenderType: internal
+Status: talking,balloon(0=0)
+ID: OnTranslate
+Reference0: \s[201]\i[a]Done.\i[ch]\![anim,clear,a]
+Reference1: 
+Reference2: OnUpdateComplete
+Reference3: changedmouse.dicghostmanual
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: \s[201]\i[a]Done.\i[ch]\![anim,clear,a]
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+SecurityLevel: local
+SecurityOrigin: null
+Sender: SSP
+SenderType: internal
+Status: talking,balloon(0=0)
+ID: OnUpdateResultEx
+Reference0: MedicghostOK1
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+SecurityLevel: local
+SecurityOrigin: null
+Sender: SSP
+SenderType: internal
+Status: talking,balloon(0=0)
+ID: OnUpdateResult
+Reference0: ghostOK1
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+SecurityLevel: local
+SecurityOrigin: null
+Sender: SSP
+SenderType: internal
+Status: talking,balloon(0=0)
+ID: OnSurfaceChange
+Reference0: 201
+Reference1: 10
+Reference2: 0,201,680,1080
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+ID: otherghostname
+SecurityLevel: local
+Charset: UTF-8
+Sender: SSP
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+SecurityLevel: local
+SecurityOrigin: null
+Sender: SSP
+SenderType: internal
+ID: OnBalloonClose
+Reference0: \s[201]\i[a]Done.\i[ch]\![anim,clear,a]
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+SecurityLevel: local
+SecurityOrigin: null
+Sender: SSP
+SenderType: internal
+ID: OnSurfaceRestore
+Reference0: 201
+Reference1: 10
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: \0\s[90]\e
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+SecurityLevel: local
+SecurityOrigin: null
+Sender: SSP
+SenderType: internal
+Status: talking
+ID: OnTranslate
+Reference0: \0\s[90]\e
+Reference1: 
+Reference2: OnSurfaceRestore
+Reference3: 20110
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: \0\s[90]\e
+
+
+// request
+NOTIFY SHIORI/3.0
 Charset: UTF-8
 SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
 ID: OnSurfaceChange
-Reference0: 0
+Reference0: 90
 Reference1: 10
-Reference2: 0,0,680,1080
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-NOTIFY SHIORI/3.0
-ID: otherghostname
-SecurityLevel: local
-Charset: UTF-8
-Sender: SSP
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-NOTIFY SHIORI/3.0
-ID: otherghostname
-SecurityLevel: local
-Charset: UTF-8
-Sender: SSP
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-GET SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: OnMinuteChange
-Reference0: 2
-Reference1: 0
-Reference2: 0
-Reference3: 1
-Reference4: 0
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-GET SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: OnBatteryNotify
-Reference0: -1
-Reference1: -1
-Reference2: online
-Reference3: no_battery
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 204 No Content
-Charset: UTF-8
-
-
-// request
-NOTIFY SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
-ID: rateofusegraph
-Reference0: MedicMedicSpy375581185.230273install172203797.651007270415198.786292
-Reference1: Dr. W.D. GasterGasterBrothers793813.757700install000.000000120.047596
-Reference2: MedicMedicidklol12490.718686boot12492.34899312491.166111
-Reference3: GT Ghost Template - YAYAGirlTriangle2110.161338vanish000.000000000.000000
-Reference4: DemomanDemomanNO470.102669install000.000000000.000000
-Reference5: Emily/Phase4.5EmilyTeddy820.029334install100.000000400.000000
-Reference6: MedicMedic100.000000install000.000000000.000000
+Reference2: 0,90,680,1080
 
 
 // response (Execution time : 0[ms])
@@ -1629,23 +1582,6 @@ SecurityLevel: local
 SecurityOrigin: null
 Sender: SSP
 SenderType: internal
-ID: homeurl
-
-
-// response (Execution time : 0[ms])
-SHIORI/3.0 200 OK
-Sender: AYA
-Charset: UTF-8
-Value: http://www.somekindofwebhost.com/yourghostsdirectory/
-
-
-// request
-GET SHIORI/3.0
-Charset: UTF-8
-SecurityLevel: local
-SecurityOrigin: null
-Sender: SSP
-SenderType: internal
 ID: updatebutton.visible
 
 
@@ -1745,7 +1681,7 @@ ID: readmebutton.caption
 SHIORI/3.0 200 OK
 Sender: AYA
 Charset: UTF-8
-Value: Manual
+Value: READ ME
 
 
 // request
@@ -1805,7 +1741,7 @@ SenderType: internal
 ID: vanishbutton.caption
 
 
-// response (Execution time : 0[ms])
+// response (Execution time : 16[ms])
 SHIORI/3.0 200 OK
 Sender: AYA
 Charset: UTF-8
@@ -1856,7 +1792,7 @@ ID: sakura.recommendsites
 SHIORI/3.0 200 OK
 Sender: AYA
 Charset: UTF-8
-Value: Ghost Template Walkthroughhttp://www.ashido.com/ukagaka/Zarla's Twitterhttps://twitter.com/Zarla_S/Zarla's Tumblrhttp://zarla-s.tumblr.com/Zarla's Dreamwidthhttp://zarla.dreamwidth.org/SSPhttp://ssp.shillest.net/Crow + SSP Reference (J)http://crow.aqrs.jp/reference/all/index.htmlGhost Documentation (J)http://usada.sakura.vg/contents/specification.htmlDemoman GhostUKADOC Project Wiki (J)http://ssp.shillest.net/ukadoc/manual/index.html/https://ukagaka.zichqec.com/
+Value: Ghost Template Walkthroughhttp://www.ashido.com/ukagaka/Zarla's Twitterhttps://twitter.com/Zarla_S/Zarla's Tumblrhttp://zarla-s.tumblr.com/Zarla's Dreamwidthhttp://zarla.dreamwidth.org/SSPhttp://ssp.shillest.net/Crow + SSP Reference (J)http://crow.aqrs.jp/reference/all/index.htmlGhost Documentation (J)http://usada.sakura.vg/contents/specification.htmlDemoman Ghosthttps://tf2maps.net/downloads/the-demoman-ukagaka-desktop-buddy.10231//UKADOC Project Wiki (J)http://ssp.shillest.net/ukadoc/manual/index.html/https://ukagaka.zichqec.com/
 
 
 // request
@@ -2113,7 +2049,7 @@ SenderType: internal
 ID: utilityrootbutton.caption
 
 
-// response (Execution time : 0[ms])
+// response (Execution time : 16[ms])
 SHIORI/3.0 204 No Content
 Charset: UTF-8
 
@@ -2398,7 +2334,7 @@ SenderType: internal
 ID: texttospeechbutton.visible
 
 
-// response (Execution time : 0[ms])
+// response (Execution time : 16[ms])
 SHIORI/3.0 204 No Content
 Charset: UTF-8
 
@@ -2758,7 +2694,7 @@ SenderType: internal
 ID: switchmovetodefaultpositionbutton.visible
 
 
-// response (Execution time : 0[ms])
+// response (Execution time : 15[ms])
 SHIORI/3.0 204 No Content
 Charset: UTF-8
 
@@ -2899,3 +2835,27 @@ Charset: UTF-8
 
 
 // request
+GET SHIORI/3.0
+Charset: UTF-8
+SecurityLevel: local
+SecurityOrigin: null
+Sender: SSP
+SenderType: internal
+ID: configurationghostbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+SecurityLevel: local
+SecurityOrigin: null
+Sender: SSP
+SenderType: internal
+ID: configurationghostbutton.caption
+
+

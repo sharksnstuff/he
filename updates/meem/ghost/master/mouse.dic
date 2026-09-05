@@ -367,7 +367,7 @@ MouseDoubleClickKero
  	}
 	else //Otherwise if you click anywhere else on Triangle's body
  	{
-		OpenKeroMenu //This will open his menu set up in menu.dic.
+		OpenKeroMenu //This will open his menu set up in menu.dic. 
 	}
  }
 

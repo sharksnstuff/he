@@ -1,0 +1,18 @@
+September 10, 2026
+
+- Added dialogue for minimizing/restoring Medic and switching off him via the right-click menu while he's asleep.
+- Added an actual changelog file to the program. My quest to larp as a real indie dev continues.
+
+-===-
+
+September 5, 2026
+
+- Fixed the incorrect dates on the website's version history.
+- Fixed a bug where petting Medic while he was sleeping would instantly wake him up if he didn't trust you yet.
+- Fixed a typo in the second batch of right-click menu links.
+
+-===-
+
+September 4, 2026
+
+- Released the ghost.

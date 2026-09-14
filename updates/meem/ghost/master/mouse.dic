@@ -284,7 +284,7 @@ MouseDoubleClickSakura
 		"\0\f[italic,true](He's drawing a bunch of incredibly complex-looking medical diagrams. You don't get a word of it...)\e"
 		"\0\f[italic,true](He's drawn a circle, and is shading it very carefully.)\e"
 		"\0\f[italic,true](It looks like he's writing a to-do list of some kind.)\e"
-		"\0\s[30]\i[armcross]\i[ch]Excu\i[o]\![anim,clear,ch]se m\i[ch]\![anim,clear,o]e! \i[base]\![anim,clear,ch]\w5\s[134]\i[armcross]\i[ch]Has \i[o]\![anim,clear,ch]no one\i[ch]\![anim,clear,o] ever\i[o]\![anim,clear,ch] told y\i[ch]\![anim,clear,o]ou it'\i[o]\![anim,clear,ch]s rud\i[ch]\![anim,clear,o]e to \i[base]\![anim,clear,ch]look \i[o]\![anim,clear,base]over \i[au]\![anim,clear,o]someone\i[o]\![anim,clear,au]'s s\i[ch]\![anim,clear,o]hould\i[a]\![anim,clear,ch]er lik\i[ch]\![anim,clear,a]e that?\e"
+		"\0\f[italic,false]\s[30]\i[armcross]\i[ch]Excu\i[o]\![anim,clear,ch]se m\i[ch]\![anim,clear,o]e! \i[base]\![anim,clear,ch]\w5\s[134]\i[armcross]\i[ch]Has \i[o]\![anim,clear,ch]no one\i[ch]\![anim,clear,o] ever\i[o]\![anim,clear,ch] told y\i[ch]\![anim,clear,o]ou it'\i[o]\![anim,clear,ch]s rud\i[ch]\![anim,clear,o]e to \i[base]\![anim,clear,ch]look \i[o]\![anim,clear,base]over \i[au]\![anim,clear,o]someone\i[o]\![anim,clear,au]'s s\i[ch]\![anim,clear,o]hould\i[a]\![anim,clear,ch]er lik\i[ch]\![anim,clear,a]e that?\e"
 		if petcount >= 10
 		{
 			"\0\f[italic,true](He's writing about you, you think. \w5The bottom right corner says 'LIKES ME???' with a bunch of question marks around it.)\e"

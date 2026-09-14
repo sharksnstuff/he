@@ -86,7 +86,7 @@ MouseMoveSakura
 					
 					"\0\s[200]Hmm.\e"
 						
-					"\0\s[232]\i[armcross]Hmm...\e"
+					"\0\s[232]\i[base]\i[armcross]Hmm...\e"
 					
 					if petcount < 10
 					{

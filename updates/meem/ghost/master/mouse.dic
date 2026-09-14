@@ -96,7 +96,7 @@ MouseMoveSakura
 					}
 						
 						
-					if petcount >= 50
+					if petcount >= 50 && RAND(100) <= 14
 					{
 						"\s[61]\i[a]\i[armside]I won\i[au]\![anim,clear,a]der w\i[o]\![anim,clear,au]hen t\i[a]\![anim,clear,o]his g\i[ch]\![anim,clear,a]estur\i[a]\![anim,clear,ch]e wil\i[o]\![anim,clear,a]l bec\i[a]\![anim,clear,o]ome m\i[base]\![anim,clear,a]eanin\i[a]\![anim,clear,base]gless t\i[ch]\![anim,clear,a]o yo\i[o]\![anim,clear,ch]u. \i[base]\![anim,clear,o]\w5\s[62]\i[o]You'v\i[a]\![anim,clear,o]e don\i[ch]\![anim,clear,a]e it \i[o]\![anim,clear,ch]so of\i[au]\![anim,clear,o]ten I\i[ch]\![anim,clear,au] ima\i[a]\![anim,clear,ch]gine it's beco\i[ch]\![anim,clear,a]me a \i[a]\![anim,clear,ch]large\i[au]\![anim,clear,a]ly au\i[ch]\![anim,clear,au]tomat\i[a]\![anim,clear,ch]ic proc\i[ch]\![anim,clear,a]ess...\n\n[half]\w5\s[80]\i[shut]\![anim,clear,ch]\f[italic,true](You give him an extra soft pet.)\n\n[half]\w5"
 						--

@@ -80,13 +80,7 @@ MouseMoveSakura
 				else
 				{
 					petcount += 1
-					"\0\s[200]Mmph. \w5\s[0]\i[a]Yes?\i[ch]\![anim,clear,a]??\e"
-					
-					"\0\s[1]\f[italic,true](You r\i[0]uffl\i[0]e his \i[0]hair. \w5\s[24]\i[base]He grumbles to himself.)\e"
-					
-					"\0\s[200]Hmm.\e"
-						
-					"\0\s[232]\i[base]\i[armcross]Hmm...\e"
+					GenPets
 					
 					if petcount < 10
 					{
@@ -315,6 +309,17 @@ Select.sleeptosit
 Select.sleeptosettings
 {
 	TalkConfig
+}
+
+GenPets : nonoverlap_pool
+{
+	"\0\s[200]Mmph. \w5\s[0]\i[a]Yes?\i[ch]\![anim,clear,a]??\e"
+					
+	"\0\s[1]\f[italic,true](You r\i[0]uffl\i[0]e his \i[0]hair. \w5\s[24]\i[base]He grumbles to himself.)\e"
+	
+	"\0\s[200]Hmm.\e"
+		
+	"\0\s[232]\i[base]\i[armcross]Hmm...\e"
 }
 
 GrowingPets : nonoverlap_pool

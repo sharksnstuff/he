@@ -88,65 +88,24 @@ MouseMoveSakura
 						
 					"\0\s[232]\i[base]\i[armcross]Hmm...\e"
 					
-					if petcount < 10
-					{
-						"\0\s[32]\i[a]Eh??\i[ch]\![anim,clear,a]?\n\n[half]\w5\f[italic,true](He seems confused by the pet.)\n\n[half]\w5\f[italic,false]\s[0]\i[o]What\i[ch]\![anim,clear,o] was \i[a]\![anim,clear,ch]that fo\i[ch]\![anim,clear,a]r??\e"
-						
-						"\0\s[61]\i[ch]Is i\i[a]\![anim,clear,ch]t you\i[o]\![anim,clear,a]r rea\i[a]\![anim,clear,o]l han\i[ch]\![anim,clear,a]d you\i[o]\![anim,clear,ch]'re using\i[ch]\![anim,clear,o] for \i[a]\![anim,clear,ch]this,\i[ch]\![anim,clear,a] or s\i[au]\![anim,clear,ch]omething else\i[ch]\![anim,clear,au]...?\e"
+					parallel Pool("Pool_growingpets","%(petcount < 10)")
 					
-					}
-					elseif petcount >= 10
+					parallel Pool("Pool_highpets","%(petcount >= 10 && petcount < 30)")
+					
+					parallel Pool("Pool_higherpets","%(petcount >= 30)")
+						
+						
+					if petcount >= 50
 					{
-						"\0\s[200]\f[italic,true](You pet him jus\s[0]t a smidge harder than usual. \w5\s[100]He makes a little noise of confusion.)\e"
-						
-						"\0\s[62]\i[o]Houh\i[base]\![anim,clear,o]! \w4\i[o]\![anim,clear,base]You u\i[ch]\![anim,clear,o]sed j\i[a]\![anim,clear,ch]ust a\i[base]\![anim,clear,a] bit \i[ch]\![anim,clear,base]more \i[o]\![anim,clear,ch]press\i[a]\![anim,clear,o]ure that time.\i[base]\![anim,clear,a] \w4\s[161]\i[ch]Is t\i[au]\![anim,clear,ch]hat \i[ch]\![anim,clear,au]signi\i[a]\![anim,clear,ch]ficant? \i[ch]\![anim,clear,a]\e"
-						
-						"\0\s[0]\i[a]How l\i[au]\![anim,clear,a]ong do \i[ch]\![anim,clear,au]you p\i[o]\![anim,clear,ch]lan \i[a]\![anim,clear,o]to kee\i[ch]\![anim,clear,a]p thi\i[a]\![anim,clear,ch]s up for..\i[ch]\![anim,clear,a].?\e"
-						
-						"\0\s[62]\i[ch]Is t\i[a]\![anim,clear,ch]his s\i[o]\![anim,clear,a]ome k\i[ch]\![anim,clear,o]ind o\i[o]\![anim,clear,ch]f cul\i[a]\![anim,clear,o]tural thin\i[ch]\![anim,clear,a]g? \w5\s[61]\i[au]Are y\i[o]\![anim,clear,au]ou at\i[ch]\![anim,clear,o]tempting \i[o]\![anim,clear,ch]to co\i[au]\![anim,clear,o]urt me\i[ch]\![anim,clear,au]? \w5\s[161]\i[a]\i[armside]Becau\i[au]\![anim,clear,a]se I \i[ch]\![anim,clear,au]feel \i[a]\![anim,clear,ch]the n\i[ch]\![anim,clear,a]eed t\i[a]\![anim,clear,ch]o inform yo\i[ch]\![anim,clear,a]u tha\i[au]\![anim,clear,ch]t thi\i[o]\![anim,clear,au]s isn\i[ch]\![anim,clear,o]'t ho\i[a]\![anim,clear,ch]w buildin\i[ch]\![anim,clear,a]g a r\i[a]\![anim,clear,ch]elationsh\i[ch]\![anim,clear,a]ip ty\i[a]\![anim,clear,ch]pically works\i[ch]\![anim,clear,a]...\e"
-						
-						"\0\s[0]\i[o]..\i[ch]\![anim,clear,o].you \i[a]\![anim,clear,ch]still haven'\i[ch]\![anim,clear,a]t got\i[o]\![anim,clear,ch]ten b\i[ch]\![anim,clear,o]ored \i[a]\![anim,clear,ch]of th\i[ch]\![anim,clear,a]is?\e"
-					}
-					elseif petcount >= 30
-					{
-						"\0\s[32]\i[armcross]\i[au]Persi\i[a]\![anim,clear,au]stent\i[ch]\![anim,clear,a], are\i[au]\![anim,clear,ch]n't you\i[ch]\![anim,clear,au]?\e"
-						
-						"\0\s[141]\i[ch]If th\i[a]\![anim,clear,ch]is is an\i[ch]\![anim,clear,a] expe\i[a]\![anim,clear,ch]riment\i[ch]\![anim,clear,a] of s\i[o]\![anim,clear,ch]ome k\i[a]\![anim,clear,o]ind, \s[240]\i[ch]I str\i[a]\![anim,clear,ch]uggle t\i[o]\![anim,clear,a]o imag\i[a]\![anim,clear,o]ine wha\i[ch]\![anim,clear,a]t kind\i[a]\![anim,clear,ch] of w\i[ch]\![anim,clear,a]orthwh\i[a]\![anim,clear,ch]ile data it gets you\i[ch]\![anim,clear,a].\e"
-						
-						"\0\s[133]\i[a]\i[armcross]I sup\i[au]\![anim,clear,a]pose \i[ch]\![anim,clear,au]I sho\i[o]\![anim,clear,ch]uld b\i[ch]\![anim,clear,o]e fla\i[a]\![anim,clear,ch]ttere\i[ch]\![anim,clear,a]d...\e"
-						
-						"\0\s[0]\i[a]Is th\i[ch]\![anim,clear,a]is re\i[a]\![anim,clear,ch]ally not ge\i[ch]\![anim,clear,a]tting\i[au]\![anim,clear,ch] awkw\i[ch]\![anim,clear,au]ard f\i[o]\![anim,clear,ch]or you \i[a]\![anim,clear,o]at all.\i[ch]\![anim,clear,a]..?\e"
-						
-						"\0\s[32]\i[a]\i[armcross]Still\i[ch]\![anim,clear,a]...?\e"
-						
-						"\0\s[100]\i[o]You're\i[au]\![anim,clear,o] alarming\i[ch]\![anim,clear,au]ly com\i[a]\![anim,clear,ch]mitte\i[ch]\![anim,clear,a]d to \i[a]\![anim,clear,ch]this.\i[ch]\![anim,clear,a] \w5\s[0]\i[a]\i[armup]What ar\i[ch]\![anim,clear,a]e you\i[o]\![anim,clear,ch] hopi\i[ch]\![anim,clear,o]ng to\i[o]\![anim,clear,ch] achi\i[a]\![anim,clear,o]eve? \i[ch]\![anim,clear,a]\e"
-						
-						"\0\s[232]\i[base]\i[armcross]\f[italic,true](He just sighs.)\e"
-						
-						"\0\s[131]\i[pout]\i[armcross]\f[italic,true](He looks displeased, but he doesn't seem as tense as he used to when you did this.)\e"
-						
-						"\0\s[230]\i[pout]\i[armcross]Hmph.\e"
-						
-						"\0\s[230]\i[base]\i[armcross]...\e"
-						
-						"\0\s[133]\i[base]\i[armcross]...\e"
-						
-						"\0\s[201]Mmhm, \w2\s[170]\i[a]yes.\i[ch]\![anim,clear,a]\n\n[half]\w5\s[boardlooky]\f[italic,true](He goes right back to work.)\e"
-						
-						"\0\s[boardlooky]\f[italic,true](Is he taking notes on your petting...?)\n\n[half]\w5\s[170]\i[base]\f[italic,false]Mm, i\i[a]\![anim,clear,base]ncons\i[ch]\![anim,clear,a]isten\i[a]\![anim,clear,ch]t downt\i[ch]\![anim,clear,a]ime b\i[au]\![anim,clear,ch]etwee\i[base]\![anim,clear,au]n ins\i[ch]\![anim,clear,base]tanc\i[a]\![anim,clear,ch]es..\i[ch]\![anim,clear,a].\e"
-						
-						if petcount >= 50
-						{
-							"\s[61]\i[a]\i[armside]I won\i[au]\![anim,clear,a]der w\i[o]\![anim,clear,au]hen t\i[a]\![anim,clear,o]his g\i[ch]\![anim,clear,a]estur\i[a]\![anim,clear,ch]e wil\i[o]\![anim,clear,a]l bec\i[a]\![anim,clear,o]ome m\i[base]\![anim,clear,a]eanin\i[a]\![anim,clear,base]gless t\i[ch]\![anim,clear,a]o yo\i[o]\![anim,clear,ch]u. \i[base]\![anim,clear,o]\w5\s[62]\i[o]You'v\i[a]\![anim,clear,o]e don\i[ch]\![anim,clear,a]e it \i[o]\![anim,clear,ch]so of\i[au]\![anim,clear,o]ten I\i[ch]\![anim,clear,au] ima\i[a]\![anim,clear,ch]gine it's beco\i[ch]\![anim,clear,a]me a \i[a]\![anim,clear,ch]large\i[au]\![anim,clear,a]ly au\i[ch]\![anim,clear,au]tomat\i[a]\![anim,clear,ch]ic proc\i[ch]\![anim,clear,a]ess...\n\n[half]\w5\s[80]\i[shut]\![anim,clear,ch]\f[italic,true](You give him an extra soft pet.)\n\n[half]\w5"
-							--
-							"\s[20]"
-							"\s[120]"
-							"\s[24]"
-							"\s[124]"
-							--
-							"\i[base]\f[italic,false]...\e"
-							"\i[base]\f[italic,false]Hmph...\e"
-						}
+						"\s[61]\i[a]\i[armside]I won\i[au]\![anim,clear,a]der w\i[o]\![anim,clear,au]hen t\i[a]\![anim,clear,o]his g\i[ch]\![anim,clear,a]estur\i[a]\![anim,clear,ch]e wil\i[o]\![anim,clear,a]l bec\i[a]\![anim,clear,o]ome m\i[base]\![anim,clear,a]eanin\i[a]\![anim,clear,base]gless t\i[ch]\![anim,clear,a]o yo\i[o]\![anim,clear,ch]u. \i[base]\![anim,clear,o]\w5\s[62]\i[o]You'v\i[a]\![anim,clear,o]e don\i[ch]\![anim,clear,a]e it \i[o]\![anim,clear,ch]so of\i[au]\![anim,clear,o]ten I\i[ch]\![anim,clear,au] ima\i[a]\![anim,clear,ch]gine it's beco\i[ch]\![anim,clear,a]me a \i[a]\![anim,clear,ch]large\i[au]\![anim,clear,a]ly au\i[ch]\![anim,clear,au]tomat\i[a]\![anim,clear,ch]ic proc\i[ch]\![anim,clear,a]ess...\n\n[half]\w5\s[80]\i[shut]\![anim,clear,ch]\f[italic,true](You give him an extra soft pet.)\n\n[half]\w5"
+						--
+						"\s[20]"
+						"\s[120]"
+						"\s[24]"
+						"\s[124]"
+						--
+						"\i[base]\f[italic,false]...\e"
+						"\i[base]\f[italic,false]Hmph...\e"
 					}
 				}
  			}
@@ -350,7 +309,55 @@ Select.sleeptosettings
 {
 	TalkConfig
 }
- 
+
+Pool_growingpets : nonoverlap_pool
+{
+	"\0\s[32]\i[a]Eh??\i[ch]\![anim,clear,a]?\n\n[half]\w5\f[italic,true](He seems confused by the pet.)\n\n[half]\w5\f[italic,false]\s[0]\i[o]What\i[ch]\![anim,clear,o] was \i[a]\![anim,clear,ch]that fo\i[ch]\![anim,clear,a]r??\e"
+	
+	"\0\s[61]\i[ch]Is i\i[a]\![anim,clear,ch]t you\i[o]\![anim,clear,a]r rea\i[a]\![anim,clear,o]l han\i[ch]\![anim,clear,a]d you\i[o]\![anim,clear,ch]'re using\i[ch]\![anim,clear,o] for \i[a]\![anim,clear,ch]this,\i[ch]\![anim,clear,a] or s\i[au]\![anim,clear,ch]omething else\i[ch]\![anim,clear,au]...?\e"
+}
+
+Pool_highpets : nonoverlap_pool
+{
+	"\0\s[200]\f[italic,true](You pet him jus\s[0]t a smidge harder than usual. \w5\s[100]He makes a little noise of confusion.)\e"
+
+	"\0\s[62]\i[o]Houh\i[base]\![anim,clear,o]! \w4\i[o]\![anim,clear,base]You u\i[ch]\![anim,clear,o]sed j\i[a]\![anim,clear,ch]ust a\i[base]\![anim,clear,a] bit \i[ch]\![anim,clear,base]more \i[o]\![anim,clear,ch]press\i[a]\![anim,clear,o]ure that time.\i[base]\![anim,clear,a] \w4\s[161]\i[ch]Is t\i[au]\![anim,clear,ch]hat \i[ch]\![anim,clear,au]signi\i[a]\![anim,clear,ch]ficant? \i[ch]\![anim,clear,a]\e"
+	
+	"\0\s[0]\i[a]How l\i[au]\![anim,clear,a]ong do \i[ch]\![anim,clear,au]you p\i[o]\![anim,clear,ch]lan \i[a]\![anim,clear,o]to kee\i[ch]\![anim,clear,a]p thi\i[a]\![anim,clear,ch]s up for..\i[ch]\![anim,clear,a].?\e"
+	
+	"\0\s[62]\i[ch]Is t\i[a]\![anim,clear,ch]his s\i[o]\![anim,clear,a]ome k\i[ch]\![anim,clear,o]ind o\i[o]\![anim,clear,ch]f cul\i[a]\![anim,clear,o]tural thin\i[ch]\![anim,clear,a]g? \w5\s[61]\i[au]Are y\i[o]\![anim,clear,au]ou at\i[ch]\![anim,clear,o]tempting \i[o]\![anim,clear,ch]to co\i[au]\![anim,clear,o]urt me\i[ch]\![anim,clear,au]? \w5\s[161]\i[a]\i[armside]Becau\i[au]\![anim,clear,a]se I \i[ch]\![anim,clear,au]feel \i[a]\![anim,clear,ch]the n\i[ch]\![anim,clear,a]eed t\i[a]\![anim,clear,ch]o inform yo\i[ch]\![anim,clear,a]u tha\i[au]\![anim,clear,ch]t thi\i[o]\![anim,clear,au]s isn\i[ch]\![anim,clear,o]'t ho\i[a]\![anim,clear,ch]w buildin\i[ch]\![anim,clear,a]g a r\i[a]\![anim,clear,ch]elationsh\i[ch]\![anim,clear,a]ip ty\i[a]\![anim,clear,ch]pically works\i[ch]\![anim,clear,a]...\e"
+	
+	"\0\s[0]\i[o]..\i[ch]\![anim,clear,o].you \i[a]\![anim,clear,ch]still haven'\i[ch]\![anim,clear,a]t got\i[o]\![anim,clear,ch]ten b\i[ch]\![anim,clear,o]ored \i[a]\![anim,clear,ch]of th\i[ch]\![anim,clear,a]is?\e"
+}
+
+Pool_higherpets : nonoverlap_pool
+{
+	"\0\s[32]\i[armcross]\i[au]Persi\i[a]\![anim,clear,au]stent\i[ch]\![anim,clear,a], are\i[au]\![anim,clear,ch]n't you\i[ch]\![anim,clear,au]?\e"
+
+	"\0\s[141]\i[ch]If th\i[a]\![anim,clear,ch]is is an\i[ch]\![anim,clear,a] expe\i[a]\![anim,clear,ch]riment\i[ch]\![anim,clear,a] of s\i[o]\![anim,clear,ch]ome k\i[a]\![anim,clear,o]ind, \s[240]\i[ch]I str\i[a]\![anim,clear,ch]uggle t\i[o]\![anim,clear,a]o imag\i[a]\![anim,clear,o]ine wha\i[ch]\![anim,clear,a]t kind\i[a]\![anim,clear,ch] of w\i[ch]\![anim,clear,a]orthwh\i[a]\![anim,clear,ch]ile data it gets you\i[ch]\![anim,clear,a].\e"
+	
+	"\0\s[133]\i[a]\i[armcross]I sup\i[au]\![anim,clear,a]pose \i[ch]\![anim,clear,au]I sho\i[o]\![anim,clear,ch]uld b\i[ch]\![anim,clear,o]e fla\i[a]\![anim,clear,ch]ttere\i[ch]\![anim,clear,a]d...\e"
+	
+	"\0\s[0]\i[a]Is th\i[ch]\![anim,clear,a]is re\i[a]\![anim,clear,ch]ally not ge\i[ch]\![anim,clear,a]tting\i[au]\![anim,clear,ch] awkw\i[ch]\![anim,clear,au]ard f\i[o]\![anim,clear,ch]or you \i[a]\![anim,clear,o]at all.\i[ch]\![anim,clear,a]..?\e"
+	
+	"\0\s[32]\i[a]\i[armcross]Still\i[ch]\![anim,clear,a]...?\e"
+	
+	"\0\s[100]\i[o]You're\i[au]\![anim,clear,o] alarming\i[ch]\![anim,clear,au]ly com\i[a]\![anim,clear,ch]mitte\i[ch]\![anim,clear,a]d to \i[a]\![anim,clear,ch]this.\i[ch]\![anim,clear,a] \w5\s[0]\i[a]\i[armup]What ar\i[ch]\![anim,clear,a]e you\i[o]\![anim,clear,ch] hopi\i[ch]\![anim,clear,o]ng to\i[o]\![anim,clear,ch] achi\i[a]\![anim,clear,o]eve? \i[ch]\![anim,clear,a]\e"
+	
+	"\0\s[232]\i[base]\i[armcross]\f[italic,true](He just sighs.)\e"
+	
+	"\0\s[131]\i[pout]\i[armcross]\f[italic,true](He looks displeased, but he doesn't seem as tense as he used to when you did this.)\e"
+	
+	"\0\s[230]\i[pout]\i[armcross]Hmph.\e"
+	
+	"\0\s[230]\i[base]\i[armcross]...\e"
+	
+	"\0\s[133]\i[base]\i[armcross]...\e"
+	
+	"\0\s[201]Mmhm, \w2\s[170]\i[a]yes.\i[ch]\![anim,clear,a]\n\n[half]\w5\s[boardlooky]\f[italic,true](He goes right back to work.)\e"
+	
+	"\0\s[boardlooky]\f[italic,true](Is he taking notes on your petting...?)\n\n[half]\w5\s[170]\i[base]\f[italic,false]Mm, i\i[a]\![anim,clear,base]ncons\i[ch]\![anim,clear,a]isten\i[a]\![anim,clear,ch]t downt\i[ch]\![anim,clear,a]ime b\i[au]\![anim,clear,ch]etwee\i[base]\![anim,clear,au]n ins\i[ch]\![anim,clear,base]tanc\i[a]\![anim,clear,ch]es..\i[ch]\![anim,clear,a].\e"
+}
  //---- MouseDoubleClickKero -----------------------------------------------------------
  //This is just the same as MouseDoubleClickSakura above, except for your secondary character. The same principles apply, including how to make your character unhittable.
  

@@ -88,11 +88,18 @@ MouseMoveSakura
 						
 					"\0\s[232]\i[base]\i[armcross]Hmm...\e"
 					
-					parallel Pool("Pool_growingpets","%(petcount < 10)")
-					
-					parallel Pool("Pool_highpets","%(petcount >= 10 && petcount < 30)")
-					
-					parallel Pool("Pool_higherpets","%(petcount >= 30)")
+					if petcount < 10
+					{
+						GrowingPets
+					}
+					elseif petcount >= 10 && petcount < 30
+					{
+						HighPets
+					}
+					elseif petcount >= 30
+					{
+						HigherPets
+					}
 						
 						
 					if petcount >= 50
@@ -310,14 +317,14 @@ Select.sleeptosettings
 	TalkConfig
 }
 
-Pool_growingpets : nonoverlap_pool
+GrowingPets : nonoverlap_pool
 {
 	"\0\s[32]\i[a]Eh??\i[ch]\![anim,clear,a]?\n\n[half]\w5\f[italic,true](He seems confused by the pet.)\n\n[half]\w5\f[italic,false]\s[0]\i[o]What\i[ch]\![anim,clear,o] was \i[a]\![anim,clear,ch]that fo\i[ch]\![anim,clear,a]r??\e"
 	
 	"\0\s[61]\i[ch]Is i\i[a]\![anim,clear,ch]t you\i[o]\![anim,clear,a]r rea\i[a]\![anim,clear,o]l han\i[ch]\![anim,clear,a]d you\i[o]\![anim,clear,ch]'re using\i[ch]\![anim,clear,o] for \i[a]\![anim,clear,ch]this,\i[ch]\![anim,clear,a] or s\i[au]\![anim,clear,ch]omething else\i[ch]\![anim,clear,au]...?\e"
 }
 
-Pool_highpets : nonoverlap_pool
+HighPets : nonoverlap_pool
 {
 	"\0\s[200]\f[italic,true](You pet him jus\s[0]t a smidge harder than usual. \w5\s[100]He makes a little noise of confusion.)\e"
 
@@ -330,7 +337,7 @@ Pool_highpets : nonoverlap_pool
 	"\0\s[0]\i[o]..\i[ch]\![anim,clear,o].you \i[a]\![anim,clear,ch]still haven'\i[ch]\![anim,clear,a]t got\i[o]\![anim,clear,ch]ten b\i[ch]\![anim,clear,o]ored \i[a]\![anim,clear,ch]of th\i[ch]\![anim,clear,a]is?\e"
 }
 
-Pool_higherpets : nonoverlap_pool
+HigherPets : nonoverlap_pool
 {
 	"\0\s[32]\i[armcross]\i[au]Persi\i[a]\![anim,clear,au]stent\i[ch]\![anim,clear,a], are\i[au]\![anim,clear,ch]n't you\i[ch]\![anim,clear,au]?\e"
 

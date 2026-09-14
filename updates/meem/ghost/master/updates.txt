@@ -1,9 +1,9 @@
 charset,OSNative
-file,changelog.txt993876b1962fececb3b1564058884529size=716date=2026-09-14T09:55:27
+file,changelog.txt5db732897af56e455e03e21695be6980size=822date=2026-09-14T10:06:44
 file,install.txtc10c8cc045ce7b63f3785d5636040295size=518date=2024-09-10T20:40:56
 file,readme.txtbe55e806d09443f72f3e1417c25f19cfsize=2194date=2026-09-04T10:45:31
 file,thumbnail.png53d826eba0212e953f83a3f2276e282bsize=159895date=2026-08-31T11:33:51
-file,ghost/master/aitalk.dic1131ec1336bb02f7379e5f26b4e98466size=48849date=2026-09-04T09:53:13
+file,ghost/master/aitalk.dic561d92cb3d7fe20c3be86ae71659b4e6size=48813date=2026-09-14T10:07:36
 file,ghost/master/anchor.dic201df4a2ecfa8a85feb258da396a33e4size=5180date=2023-09-29T09:34:06
 file,ghost/master/bootend.dica3d8bccdd21a3edc50bbf1c8e2e75a5dsize=32828date=2026-09-10T22:00:13
 file,ghost/master/commu.diceaa3653bf0ad6a6c9712dd41ed3fa11dsize=6741date=2023-09-29T09:36:05

@@ -1,3 +1,10 @@
+September 14, 2026
+
+- Fixed some broken formatting in one of Medic's clipboard dialogues.
+- Fixed a small bug when waking Medic up to update.
+
+-===-
+
 September 10, 2026
 
 - Added dialogue for minimizing/restoring Medic and switching off him via the right-click menu while he's asleep.

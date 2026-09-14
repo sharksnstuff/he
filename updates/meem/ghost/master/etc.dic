@@ -333,7 +333,7 @@ OnUpdateBegin
 		sleeptimer = 0
 		waketimer = 1
 		minsincewake = 0
-		"\s[80]\i[0]GhhHUH—!\n\n[half]\w4\s[24]\i[a]What\i[ch]\![anim,clear,a]—\w4\s[23]\i[a]where—\n\n[half]\w4\s[0]\i[ch]D-di\i[a]\![anim,clear,ch]d you\i[o]\![anim,clear,ch] nee\i[a]\![anim,clear,o]d somet\i[ch]\![anim,clear,a]hing???\n\n[half]\w8\w8\e"
+		"\s[80]\i[0]GhhHUH—!\n\n[half]\w4\s[24]\i[a]What\i[ch]\![anim,clear,a]—\w4\s[23]\i[a]where—\n\n[half]\w4\s[0]\i[ch]D-di\i[a]\![anim,clear,ch]d you\i[o]\![anim,clear,ch] nee\i[a]\![anim,clear,o]d somet\i[ch]\![anim,clear,a]hing???\n\n[half]\w8\w8"
 	 }
 	 --
 	 if updatedonce == 0

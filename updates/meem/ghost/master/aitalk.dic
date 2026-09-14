@@ -539,20 +539,20 @@ OnSecondChange
 	//By default, this has a chance to make the ghost run OnSurfaceRestore every 15 seconds, so long as 15 seconds have passed since the last dialogue (and the balloon is not currently open). You can adjust this timing, and adjust the chance to change poses, if you like. I made it not change every time because I think it feels more organic that way.
 	
 	//This gets the time since the last dialogue ended, in seconds. SHIORI3FW.TalkEndTime is a variable that comes with YAYA as SHIORI
-	_since = GETSECCOUNT - SHIORI3FW.TalkEndTime
+	// _since = GETSECCOUNT - SHIORI3FW.TalkEndTime
 	
-	//status is an inbuilt YAYA variable that has information on if the balloon is open, etc.
-	_balloonisopen = "balloon" _in_ status
+	// //status is an inbuilt YAYA variable that has information on if the balloon is open, etc.
+	// _balloonisopen = "balloon" _in_ status
 	
-	if _since % 5 == 15 && !_balloonisopen
-	{
-		//If you want to adjust how likely it is to change poses, change the number in the RAND. Higher numbers mean a lower chance for the pose to change.
-		if RAND(4) == 0
-		{
-			reference0 = SHIORI3FW.LastSurface[0]
-			OnSurfaceRestore
-		}
-	}
+	// if _since % 5 == 15 && !_balloonisopen
+	// {
+		// //If you want to adjust how likely it is to change poses, change the number in the RAND. Higher numbers mean a lower chance for the pose to change.
+		// if RAND(4) == 0
+		// {
+			// reference0 = SHIORI3FW.LastSurface[0]
+			// OnSurfaceRestore
+		// }
+	// }
 	//------------------------------------------------ disabling this for now cause damn it gets annoying in development
 			
 	if mikireflag == 0 && reference1 == 1
